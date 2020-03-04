@@ -1,12 +1,12 @@
 import React from 'react';
-import { db } from './modules/firebase'
+import Quiz from './components/Quiz';
 
 class App extends React.Component {
   render() {
 
     return (
       <div className="App">
-  
+          <Quiz/>
       </div>
     );
 

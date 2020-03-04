@@ -1,0 +1,38 @@
+{
+    "title": "My Sports Quiz",
+    "questions": [
+        {
+            "title": "What is Ajax?",
+            "points": 2,
+            "options": [
+                {
+                    "title": "A Soccer Team",
+                    "correct": false
+                },
+                {
+                    "title": "A Computer Term",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "title": "What is Soccer?",
+            "points": 1,
+            "options": [
+                {
+                    "title": "Bad for you",
+                    "correct": true
+                },
+                {
+                    "title": "Something sweet",
+                    "correct": false
+                },
+                {
+                    "title": "OMFG",
+                    "correct": false
+                }
+            ]
+        }
+
+    ]
+}
