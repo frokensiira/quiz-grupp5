@@ -3,9 +3,36 @@ import football from './assets/football.jpg'
 import map from './assets/map.png'
 import music from './assets/music.jpg'
 import dog from './assets/dog.jpg'
-//import { db } from './modules/firebase'
+import { db } from './modules/firebase'
+
 
 class App extends React.Component {
+
+  state = {
+    quizes: [],
+  }
+
+  getQuiz = () => {
+    db.collection("quizes").get().then((querySnapshot) => {
+      const quizes = [];
+      querySnapshot.forEach((doc) => {
+          quizes.push({
+            titel:doc.data().titel,
+          });
+      });
+      console.log('this is our quiz',quizes)
+      
+      this.setState({
+        quizes:quizes
+      })
+      
+    });
+  }
+  
+    componentDidMount() {
+      this.getQuiz()
+    }
+
   render() {
 
     return (

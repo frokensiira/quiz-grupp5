@@ -1,6 +1,7 @@
 import React from 'react'
 
 
+
 class Quiz extends React.Component{
     render() {
         return(
@@ -72,3 +73,5 @@ class Quiz extends React.Component{
     }
 }
 
+  export default Quiz;
+  

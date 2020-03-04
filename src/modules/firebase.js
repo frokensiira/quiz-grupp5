@@ -2,14 +2,15 @@ import firebase from 'firebase/app';
 import 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAFM9Q1e_6LBr2gbiCmHkhpU8JdDsE636M",
-    authDomain: "quizapp-6454c.firebaseapp.com",
-    databaseURL: "https://quizapp-6454c.firebaseio.com",
-    projectId: "quizapp-6454c",
-    storageBucket: "quizapp-6454c.appspot.com",
-    messagingSenderId: "79182458111",
-    appId: "1:79182458111:web:98cbea6ef03551703930ca",
-    measurementId: "G-7RYTWV1VX4"
+    apiKey: "AIzaSyAivB-YCULUjKqQYFlEfddqTlYFcvFB9Oo",
+    authDomain: "quiz-app-g5.firebaseapp.com",
+    databaseURL: "https://quiz-app-g5.firebaseio.com",
+    projectId: "quiz-app-g5",
+    storageBucket: "quiz-app-g5.appspot.com",
+    messagingSenderId: "168469968645",
+    appId: "1:168469968645:web:fd5b47dceef5a27653e96c",
+    measurementId: "G-2L2ZXWCD34"
+
 };
 
 //Initialize Firebase
