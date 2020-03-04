@@ -13,66 +13,76 @@ class App extends React.Component {
 
         <div class="py-3 bg-white text-center">
           <div class="container">
-              <h2 class="text-primary display-3 my-4">Quiz-titel</h2>
+            <div className="row">
+              <div className="col-md-3 offset-md-8">
+                <button className="btn btn-primary btn-lg ">Skapa eget quiz</button>
+              </div>
+              <div className="col-md-6 offset-md-3">
+                <h2 className="text-primary display-3 my-4">Quiz</h2>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="result py-4 d-none bg-light text-center">
-          <div class="container lead">
-              <p>Du fick<span class="text-primary display-4 p-3">0</span> rätt</p>
+        <div className="quiz py-4 bg-primary">
+          <div className="container">
+            <div className="row row-cols-1 row-cols-md-2 mt-5">
+
+              <div className="col mb-4 border-info">
+                <div className="card h-100">
+                  <img src={football} className="card-img-top" alt=""/>
+                  <div className="card-body">
+                    <h5 className="card-title">Sport</h5>
+                    <p className="card-text">This is a longer card with
+                    supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <a href="" className="btn btn-primary mb-4">Starta quiz</a>
+                    <div class="card-footer bg-transparent border-primary">10 frågor</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col mb-4">
+                <div className="card h-100">
+                  <img src={dog} className="card-img-top" alt=""/>
+                  <div className="card-body">
+                    <h5 className="card-title">Hundar</h5>
+                    <p className="card-text">This is a longer card with
+                    supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <a href="" className="btn btn-primary mb-4">Starta quiz</a>
+                    <div class="card-footer bg-transparent border-primary">12 frågor</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col mb-4">
+                <div className="card h-100">
+                  <img src={map} className="card-img-top" alt=""/>
+                  <div className="card-body">
+                    <h5 className="card-title">Geografi</h5>
+                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="" className="btn btn-primary mb-4">Starta quiz</a>
+                    <div class="card-footer bg-transparent border-primary">15 frågor</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col mb-4">
+                <div className="card h-100">
+                  <img src={music} className="card-img-top" alt=""/>
+                  <div className="card-body">
+                    <h5 className="card-title">Musik</h5>
+                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <a href="" className="btn btn-primary mb-4">Starta quiz</a>
+                    <div class="card-footer bg-transparent border-primary">20 frågor</div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
           </div>
         </div>
-
-        <div class="quiz py-4 bg-primary">
-          <div class="container">
-              <h2 class="my-5 text-white">On with the questions...</h2>
-
-              <form class="quiz-form text-light">
-
-                  <div class="my-5">
-                    <p class="lead font-weight-normal">1. How do you give a ninja directions?</p>
-                    <div class="form-check my-2 text-white">
-                        <input type="radio" name="q1" value="A" checked className="mr-2"/>
-                        <label class="form check-label">Show them the map</label>
-                    </div>
-                    <div class="form-check my-2 text-white">
-                        <input type="radio" name="q1" value="B" className="mr-2"/>
-                        <label class="form check-label">Dont' worry, the ninja will find you</label>
-                    </div>
-                  </div>
-
-                  <div class="my-5">
-                    <p class="lead font-weight-normal">2. How do you give a ninja directions?</p>
-                    <div class="form-check my-2 text-white">
-                        <input type="radio" name="q2" value="A" checked className="mr-2"/>
-                        <label class="form check-label">Show them the map</label>
-                    </div>
-                    <div class="form-check my-2 text-white">
-                        <input type="radio" name="q2" value="B" className="mr-2"/>
-                        <label class="form check-label">Dont' worry, the ninja will find you</label>
-                    </div>
-                  </div>
-
-                  <div class="my-5">
-                    <p class="lead font-weight-normal">3. How do you give a ninja directions?</p>
-                    <div class="form-check my-2 text-white">
-                        <input type="radio" name="q3" value="A" checked className="mr-2"/>
-                        <label class="form check-label">Show them the map</label>
-                    </div>
-                    <div class="form-check my-2 text-white">
-                        <input type="radio" name="q3" value="B" className="mr-2"/>
-                        <label class="form check-label">Dont' worry, the ninja will find you</label>
-                    </div>
-                  </div>
-
-                  <div class="text-center">
-                      <input type="submit" class="btn btn-light" value="Skicka svar"/>
-                  </div>
-
-              </form>
-          </div>
-        </div>
-      </div>
+        
+      </div> 
 
     );
 
