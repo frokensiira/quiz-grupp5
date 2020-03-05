@@ -1,8 +1,6 @@
 import React from 'react'
 
-
-
-class Quiz extends React.Component{
+class ShowQuiz extends React.Component{
     render() {
         return(
           <div className="Quiz">
@@ -73,5 +71,5 @@ class Quiz extends React.Component{
     }
 }
 
-  export default Quiz;
+  export default ShowQuiz;
   

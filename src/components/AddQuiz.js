@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-
-
 class AddQuiz extends React.Component {
 
     state= {
@@ -25,7 +22,6 @@ class AddQuiz extends React.Component {
     handleClick = (e) => {
         e.preventDefault();
         console.log(e)
-        // React.createElement("input", {type: "text", value: "text"})
     }
 
     handleSubmit = (e) => {
@@ -44,7 +40,7 @@ class AddQuiz extends React.Component {
                 <h3 className="text-center">Skapa eget Quiz</h3>
                     <form id="quastion" className="inputGroup" onSubmit={this.handleSubmit}>
                         <label>Fråga</label>
-                    <input onChange={this.handlechange} id="quastion" className="form-control" type="text" name="quastion" placeholder="Fråga"/>
+                    <input onChange={this.handlechange} id="question" className="form-control" type="text" name="question" placeholder="Fråga"/>
                     <label> Alternativ 1</label>
                     <input onChange={this.handlechange} id="answer1" className="form-control" type="text" name="answer1" placeholder="Svarsalternativ 1 " />
                     <label> Alternativ 2</label>
@@ -53,11 +49,11 @@ class AddQuiz extends React.Component {
                     <input onChange={this.handlechange} id="answer3" className="form-control" type="text" name="answer2" placeholder="Svarsalternativ 3 " />
                     <label> Alternativ 4</label>
                     <input onChange={this.handlechange} id="answer4" className="form-control" type="text" name="answer2" placeholder="Svarsalternativ 4 " />
-                    <button onClick={this.handleSubmit} className="btn btn-success" >Skapa flera svarsalternativ</button>
+                    <button onClick={this.handleSubmit} className="btn btn-primary" >Skapa flera svarsalternativ</button>
                         
                        
 				</form>
-                <button onClick={this.handleClick} className="btn btn-success" >Skapa Quizet</button>
+                <button onClick={this.handleClick} className="btn btn-primary">Skapa Quizet</button>
             </div>
         )
     }
