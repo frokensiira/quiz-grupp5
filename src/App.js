@@ -38,8 +38,8 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <div class="py-3 bg-white text-center">
-          <div class="container">
+        <div className="py-3 bg-white text-center">
+          <div className="container">
             <div className="row">
               <div className="col-md-3 offset-md-8">
                 <button className="btn btn-primary btn-lg ">Skapa eget quiz</button>
@@ -63,7 +63,7 @@ class App extends React.Component {
                     <p className="card-text">This is a longer card with
                     supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <a href="" className="btn btn-primary mb-4">Starta quiz</a>
-                    <div class="card-footer bg-transparent border-primary">10 frågor</div>
+                    <div className="card-footer bg-transparent border-primary">10 frågor</div>
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@ class App extends React.Component {
                     <p className="card-text">This is a longer card with
                     supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <a href="" className="btn btn-primary mb-4">Starta quiz</a>
-                    <div class="card-footer bg-transparent border-primary">12 frågor</div>
+                    <div className="card-footer bg-transparent border-primary">12 frågor</div>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ class App extends React.Component {
                     <h5 className="card-title">Geografi</h5>
                     <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                     <a href="" className="btn btn-primary mb-4">Starta quiz</a>
-                    <div class="card-footer bg-transparent border-primary">15 frågor</div>
+                    <div className="card-footer bg-transparent border-primary">15 frågor</div>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ class App extends React.Component {
                     <h5 className="card-title">Musik</h5>
                     <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <a href="" className="btn btn-primary mb-4">Starta quiz</a>
-                    <div class="card-footer bg-transparent border-primary">20 frågor</div>
+                    <div className="card-footer bg-transparent border-primary">20 frågor</div>
                   </div>
                 </div>
               </div>
