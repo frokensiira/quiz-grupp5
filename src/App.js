@@ -1,5 +1,6 @@
 import React from 'react';
 import QuizItem from './components/QuizItem'
+import Quiz from './components/Quiz'
 import { db } from './modules/firebase'
 
 
@@ -67,6 +68,8 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+
+        <Quiz />>
         
       </div> 
 
