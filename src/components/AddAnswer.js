@@ -9,7 +9,11 @@ class AddAnswer extends React.Component {
                     <input onChange={this.handlechange} id="answer1" className="form-control form-control-lg" type="text" name="answer1" placeholder="Svarsalternativ 2" />
                 </div>
                 <div className="form-group col-md-2">
-                    <select id="inputStatus" class="form-control form-control-lg">
+                    <select 
+                    id="inputStatus" 
+                    className="form-control form-control-lg"
+                    onChange={this.props.handlechange}
+                    >
                         <option>Rätt svar</option>
                         <option selected>Fel svar</option>
                     </select>

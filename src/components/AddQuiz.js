@@ -1,6 +1,7 @@
 import React from 'react';
 import AddSingleQuiz from './AddSingleQuiz'; 
 import RenderSingleQuiz from './RenderSingleQuiz'
+//import AddAnswer from './AddAnswer'
 
 class AddQuiz extends React.Component {
 
@@ -8,14 +9,32 @@ class AddQuiz extends React.Component {
 
         questions: [
             {
-                id:'',
+                id: 1,
+                number: 1,
+                points: 10,
+                question: 'Hur många skog finns det i träden?',
+                answer1: '5',
+                answer2: '10',
+                answer3: 'Jag ser inte',
+            },
+            {
+                id: 2,
+                number: 2,
+                points: 15,
+                question: 'Vem går och går och kommer aldrig fram till dörren?',
+                answer1: 'Klockan',
+                answer2: 'Vet ej',
+                answer3: 'Jag',
+            },
+            /* {
+                id: null,
                 number: 0,
                 points: 1,
                 question: '',
                 answer1: '',
                 answer2: '',
                 answer3: '',
-            }
+            } */
 
         ],
         
@@ -51,7 +70,12 @@ class AddQuiz extends React.Component {
     
     render() {
 
-
+        const questions = this.state.questions.map(question => {
+            return <RenderSingleQuiz 
+            key={question.id} 
+            question={question}    
+            />
+        })
         return (
             <div className="quiz py-4 bg-primary">
                 <div className="mb-3 container-sm bg-white p-4 rounded-lg">
@@ -69,7 +93,7 @@ class AddQuiz extends React.Component {
 
                             
 
-                            <AddSingleQuiz />
+                            
 
                             <ul>
 
@@ -88,7 +112,7 @@ class AddQuiz extends React.Component {
 
                         </form>
 
-                        <RenderSingleQuiz />
+                        {questions}
 
                         <div className="text-center">
                             <button id="btn-create-quiz" onClick={this.handleClick} className="btn btn-primary">Skapa Quiz</button>
