@@ -59,59 +59,6 @@ class AddSingleQuiz extends React.Component {
                 <textarea maxLength="200" onChange={this.handlechange} id="question" className="form-control form-control-lg" type="text" name="question" placeholder="Fråga"></textarea>
             </div>
 
-           {/*  <div className="form-row">
-                <div className="form-group col-md-10">
-
-                    <input onChange={this.handlechange} id="answer1" className="form-control form-control-lg" type="text" name="answer1" placeholder="Svarsalternativ 1" />
-                </div>
-                <div className="form-group col-md-2">
-                    <select 
-                        id="inputStatus" 
-                        className="form-control form-control-lg" 
-                        value={!this.state.answers.value}
-                        onChange={this.handleChange}
-                    >
-                        <option value="correct">Rätt svar</option>
-                        <option value="wrong">Fel svar</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className="form-row">
-                <div className="form-group col-md-10">
-
-                    <input onChange={this.handlechange} id="answer1" className="form-control form-control-lg" type="text" name="answer1" placeholder="Svarsalternativ 2" />
-                </div>
-                <div className="form-group col-md-2">
-                    <select 
-                        id="inputStatus1" 
-                        className="form-control form-control-lg" 
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                    >
-                        <option value="correct">Rätt svar</option>
-                        <option value="wrong">Fel svar</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className="form-row">
-                <div className="form-group col-md-10">
-                    <input onChange={this.handlechange} id="answer1" className="form-control form-control-lg" type="text" name="answer1" placeholder="Svarsalternativ 3" />
-                </div>
-                <div className="form-group col-md-2">
-                    <select 
-                    id="inputStatus2" 
-                    className="form-control form-control-lg" 
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                    >
-                        <option value="correct">Rätt svar</option>
-                        <option value="wrong">Fel svar</option>
-                    </select>
-                </div>
-            </div> */}
-
             <ul id="show-answer-input">
                 {answers}
             </ul>
