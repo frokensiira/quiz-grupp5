@@ -1,9 +1,23 @@
 import React from 'react'
+import AddAnswer from './AddAnswer'
 
 class AddSingleQuiz extends React.Component {
 
     state = {
-        value: 'wrong'
+        value: 'wrong',
+        answer: [
+            {
+                id: 1,
+                input: '',
+                status: true,
+            },
+            {
+                id: 2,
+                input: '',
+                status: false,
+            },
+        ]
+        
     }
 
     handleChange = () => {
@@ -11,6 +25,8 @@ class AddSingleQuiz extends React.Component {
     }
 
     render() {
+
+        /* const answers =  */
         return(
             <div id="quiz-item">
 
@@ -73,6 +89,11 @@ class AddSingleQuiz extends React.Component {
                     </select>
                 </div>
             </div>
+
+            <ul>
+                {/* {answers} */}
+            </ul>
+            
 
             <div className="form-row">
 

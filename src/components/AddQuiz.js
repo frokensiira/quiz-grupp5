@@ -92,7 +92,7 @@ class AddQuiz extends React.Component {
                             </div>
 
                             
-
+                            <AddSingleQuiz />
                             
 
                             <ul>
