@@ -1,11 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import QuizItem from './components/QuizItem'
-import Quiz from './components/Quiz'
-import { db } from './modules/firebase'
-=======
 import AddQuiz from './components/AddQuiz';
->>>>>>> master
 
 
 import { Route, BrowserRouter, Link, Switch } from 'react-router-dom'
@@ -40,17 +34,6 @@ class App extends React.Component {
 
           
 
-<<<<<<< HEAD
-            {quizItem}
-              
-            </div>
-          </div>
-        </div>
-
-        <Quiz />>
-        
-      </div> 
-=======
           <Switch>
           <Route exact path='/' component={QuizContainer}/>
           <Route path='/quiz' component={ShowQuiz}/>
@@ -59,7 +42,6 @@ class App extends React.Component {
           
         </div> 
       </BrowserRouter> 
->>>>>>> master
 
     );
 
