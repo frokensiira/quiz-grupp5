@@ -1,6 +1,10 @@
 import React from 'react'
-import QuizItem from './QuizItem'
+//import QuizItem from './QuizItem'
 import { db } from '../modules/firebase'
+import { Link } from 'react-router-dom'
+import football from '../assets/football.jpg'
+
+
 
 class QuizContainer extends React.Component {
     state = {
@@ -8,18 +12,21 @@ class QuizContainer extends React.Component {
       }
     
       getQuiz = () => {
-        db.collection("quizes").get().then((querySnapshot) => {
+        db.collection("quizes").get().then((snapshot) => {
           const quizes = [];
-          querySnapshot.forEach((doc) => {
-              quizes.push({
-                titel:doc.data().titel,
-                description: doc.data().description,
-              });
+          snapshot.forEach((doc) => {
+            console.log('this is from GetQuiz', doc.data)
+            const quizName = {
+              id: doc.id,
+              titel:doc.data().titel,
+              description: doc.data().description,
+            }
+              quizes.push(quizName)
           });
-          console.log('this is our quiz',quizes)
+          console.log('this is our quiz', quizes)
           
           this.setState({
-            quizes:quizes
+            quizes: quizes,
           })
           
         });
@@ -33,12 +40,19 @@ class QuizContainer extends React.Component {
 
         const quizItem = this.state.quizes.map(quizItem =>{
             return (
-              <QuizItem
-                quiz={quizItem}
-                key={quizItem.id}
-              />
-            )
-          })
+              <div className="col mb-4 border-info">
+                <div className="card h-100">
+                <img src={football} className="card-img-top" alt=""/>
+                <div className="card-body">
+                    <h5 className="card-title">{quizItem.titel}</h5>
+                    <p className="card-text">{quizItem.description}</p>
+                    <button className="btn btn-primary mb-4"><Link to={'/quiz' + quizItem.id} className="btn btn-primary mb-4">Starta quiz</Link></button>
+                    <div className="card-footer bg-transparent border-primary">10 frågor</div>
+                </div>
+            </div>
+          </div>
+          )
+        })
 
         return(
             <div className="quiz py-4 bg-primary">
