@@ -1,27 +1,6 @@
 import React from 'react'
 
-<<<<<<< HEAD:src/components/Quiz.js
-
-
-
-class Quiz extends React.Component{
-
-    state = {
-        id: '',
-        titel: '',
-        questions: [],
-    }
-
-    componentDidMount() {
-    this.getQuiz()
-    }
-
-    getQuiz = () =>{
-        console.log('this is from quiz.js', doc.data)
-    }
-=======
 class ShowQuiz extends React.Component{
->>>>>>> master:src/components/ShowQuiz.js
     render() {
         return(
           <div className="Quiz">
