@@ -4,17 +4,16 @@ import AddAnswer from './AddAnswer'
 class AddSingleQuiz extends React.Component {
 
     state = {
-        value: 'wrong',
-        answer: [
+        answers: [
             {
                 id: 1,
                 input: '',
-                status: true,
+                value: 'correct',
             },
             {
                 id: 2,
                 input: '',
-                status: false,
+                value: 'wrong',
             },
         ]
         
@@ -24,9 +23,32 @@ class AddSingleQuiz extends React.Component {
 
     }
 
+    handleAddAnswer = () => {
+
+        const ids = this.state.answers.map(answer => answer.id);
+        const newId = Math.max(...ids) + 1;
+
+        const answer = {
+            id: newId,
+            input: '',
+            value: 'wrong',
+        }
+
+        const newAnswers = [...this.state.answers];
+
+        newAnswers.push(answer)
+
+        this.setState({
+            answers: newAnswers,
+        })
+    }
+
     render() {
 
-        /* const answers =  */
+        const answers =  this.state.answers.map(answer => {
+            return <AddAnswer key={answer.id} answer={answer} handleChange={this.handleChange}/>
+        })
+
         return(
             <div id="quiz-item">
 
@@ -37,7 +59,7 @@ class AddSingleQuiz extends React.Component {
                 <textarea maxLength="200" onChange={this.handlechange} id="question" className="form-control form-control-lg" type="text" name="question" placeholder="Fråga"></textarea>
             </div>
 
-            <div className="form-row">
+           {/*  <div className="form-row">
                 <div className="form-group col-md-10">
 
                     <input onChange={this.handlechange} id="answer1" className="form-control form-control-lg" type="text" name="answer1" placeholder="Svarsalternativ 1" />
@@ -46,7 +68,7 @@ class AddSingleQuiz extends React.Component {
                     <select 
                         id="inputStatus" 
                         className="form-control form-control-lg" 
-                        value={!this.state.value}
+                        value={!this.state.answers.value}
                         onChange={this.handleChange}
                     >
                         <option value="correct">Rätt svar</option>
@@ -88,17 +110,18 @@ class AddSingleQuiz extends React.Component {
                         <option value="wrong">Fel svar</option>
                     </select>
                 </div>
-            </div>
+            </div> */}
 
-            <ul>
-                {/* {answers} */}
+            <ul id="show-answer-input">
+                {answers}
             </ul>
+
             
 
             <div className="form-row">
 
                 <div className="form-group col-md-4">
-                    <button id="btn-create-answer" onClick={this.handleSubmit} className="btn btn-outline-secondary" ><span id="plus" className="font-weight-bold">+</span> Fler svarsalternativ</button>
+                    <button id="btn-create-answer" onClick={this.handleAddAnswer} className="btn btn-outline-secondary" ><span id="plus" className="font-weight-bold">+</span> Fler svarsalternativ</button>
                 </div>
 
             </div>

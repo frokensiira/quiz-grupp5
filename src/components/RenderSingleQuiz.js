@@ -5,7 +5,7 @@ class RenderSingleQuiz extends React.Component {
 
     render() {
 
-        console.log('this is props in RenderSingelQuiz', this.props.question);
+        //console.log('this is props in RenderSingelQuiz', this.props.question);
 
         const { number,question, points } = this.props.question
 
