@@ -15,7 +15,6 @@ class QuizContainer extends React.Component {
         db.collection("quizes").get().then((snapshot) => {
           const quizes = [];
           snapshot.forEach((doc) => {
-            console.log('this is from GetQuiz', doc.data)
             const quizName = {
               id: doc.id,
               titel:doc.data().titel,
@@ -46,7 +45,7 @@ class QuizContainer extends React.Component {
                 <div className="card-body">
                     <h5 className="card-title">{quizItem.titel}</h5>
                     <p className="card-text">{quizItem.description}</p>
-                    <button className="btn btn-primary mb-4"><Link to={'/quiz' + quizItem.id} className="btn btn-primary mb-4">Starta quiz</Link></button>
+                    <button className="btn btn-primary mb-4"><Link to={'/quiz/'+ quizItem.id} className="btn btn-primary mb-4">Starta quiz</Link></button>
                     <div className="card-footer bg-transparent border-primary">10 frågor</div>
                 </div>
             </div>
