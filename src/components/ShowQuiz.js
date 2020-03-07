@@ -1,6 +1,6 @@
 import React from 'react'
 import { db } from '../modules/firebase';
-//import ShiwAnswer from './ShowAnswer';
+import ShowAnswer from './ShowAnswer';
 
 class ShowQuiz extends React.Component{
   state = {
@@ -27,13 +27,15 @@ class ShowQuiz extends React.Component{
 
 		    const questionList = this.state.questions.map(question => {
 			  console.log('question', question)
+
+
 			
           return (
 			<div className="quiz py-4 bg-primary">
               	<div className="container">
 					<div className="my-5">
                 		<p className="lead font-weight-normal">{question.question}</p>
-						
+						<ShowAnswer data={question}/>
 					</div>
 				</div>
 			</div>
