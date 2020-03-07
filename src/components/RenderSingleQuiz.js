@@ -5,14 +5,14 @@ class RenderSingleQuiz extends React.Component {
 
     render() {
 
-        //console.log('this is props in RenderSingelQuiz', this.props.question);
+        console.log('this is props in RenderSingelQuiz', this.props.singleQuizItem);
 
-        const { number,question, points } = this.props.question
+        const { id, question, points } = this.props.singleQuizItem
 
         return(
             <div id="render-single-quiz" className="card mb-4">
                 <div className="card-header">
-                    Fråga {number}
+                    Fråga {id}
                 </div>
                 <div className="card-body">
                     <p>{question}</p>

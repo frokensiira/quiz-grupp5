@@ -5,47 +5,43 @@ import RenderSingleQuiz from './RenderSingleQuiz'
 
 class AddQuiz extends React.Component {
 
-    state= {
 
-        questions: [
-            {
-                id: 1,
-                number: 1,
-                points: 10,
-                question: 'Hur många skog finns det i träden?',
-                answer1: '5',
-                answer2: '10',
-                answer3: 'Jag ser inte',
-            },
-            {
-                id: 2,
-                number: 2,
-                points: 15,
-                question: 'Vem går och går och kommer aldrig fram till dörren?',
-                answer1: 'Klockan',
-                answer2: 'Vet ej',
-                answer3: 'Jag',
-            },
-            /* {
-                id: null,
-                number: 0,
-                points: 1,
-                question: '',
-                answer1: '',
-                answer2: '',
-                answer3: '',
-            } */
+    state = { 
+        quiz: 
+        {   
+            id: 1,
+            name: '',
+            
+            quizItems: []
+        }
+    }
 
-        ],
-        
+    addQuestion = (props) => {
 
-        addQuestion: false,
+        // console.log('from addQuestion: this.state is', props);
+
+        // console.log('these are myprops', props);
+
+        const newQuizItems = [...this.state.quiz.quizItems];
+
+        //console.log('my quizItems are', newQuizItems);
+
+        newQuizItems.push(props);
+
+        this.setState({
+            quiz: {
+                quizItems: newQuizItems
+            }
+        })
 
     }
-    handlechange = e => {
+
+
+    handleChange = e => {
+
+        console.log('from handleChange', e.target);
         this.setState({
-            
-        
+            [e.target.id]: e.target.value
         })
     }
 
@@ -61,21 +57,22 @@ class AddQuiz extends React.Component {
     
         })
     }
-
-    addQuestion = () => {
-        this.setState({
-            addQuestion: true,
-        })
-    }
     
     render() {
+        
+        console.log('this.state.quiz is', this.state.quiz.quizItems);
 
-        const questions = this.state.questions.map(question => {
+        const singleQuizItem = this.state.quiz.quizItems.map(singleQuizItem => {
+            console.log('my singleQuizItem is', singleQuizItem);
+            console.log('my singleQuizItem id is', singleQuizItem.id);
             return <RenderSingleQuiz 
-            key={question.id} 
-            question={question}    
+            key={singleQuizItem.id} 
+            singleQuizItem ={singleQuizItem }    
             />
-        })
+        });
+
+        //console.log('this is my quiz name', this.state.name);
+
         return (
             <div className="quiz py-4 bg-primary">
                 <div className="mb-3 container-sm bg-white p-4 rounded-lg">
@@ -83,39 +80,31 @@ class AddQuiz extends React.Component {
                         <form className="form-group" onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <input 
+                                    id="name"
+                                    name="quiz-title"
                                     className="form-control form-control-lg" 
                                     type="text" 
                                     placeholder="Namn på quiz"
-                                    value=""
-                                    onChange={e => this.handleChange(e)}
+                                    value={this.state.name}
+                                    onChange={this.handleChange}
+                                    required
                                 />
                             </div>
+                  
+                            <AddSingleQuiz addQuestion={this.addQuestion}/>
 
                             
-                            <AddSingleQuiz />
-                            
-
-                            <ul>
-
-                            </ul>
-
-                            <div className="form-group">
-                                <button 
-                                id="btn-create-answer" 
-                                onClick={this.addQuestion} 
-                                className="btn btn-primary"
-                                >
-                                <span id="plus" className="font-weight-bold">+</span>
-                                Lägg till fråga
-                                </button>
-                            </div>
 
                         </form>
 
-                        {questions}
+                        {singleQuizItem}
 
                         <div className="text-center">
-                            <button id="btn-create-quiz" onClick={this.handleClick} className="btn btn-primary">Skapa Quiz</button>
+                            <button 
+                                id="btn-create-quiz" 
+                                onClick={this.handleClick} 
+                                className="btn btn-primary"
+                            >Skapa Quiz</button>
                         </div>
                 </div>
             </div>
