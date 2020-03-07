@@ -7,6 +7,20 @@ $primary: #aac7b4;
   object-fit: cover;
 }
 
+#plus {
+  font-size: 1.5rem;
+}
+
+#show-answer-input {
+  padding-left: 0;
+}
+
+#btn-create-answer,
+#btn-create-quiz,
+#btn-save-question {
+  font-size: 1.3rem;
+}
+
 body {
   margin: 0;
 /*   background-color: #d7e0da; */
