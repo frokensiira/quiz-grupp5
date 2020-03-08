@@ -1,69 +1,74 @@
 import  React from 'react';
-import { Authentication } from '../modules/firebase'
+import { auth } from '../modules/firebase'
+import AddQuiz from './AddQuiz'
+
+
 
 
 class LogIn extends React.Component {
 
-
-	state = {
+    state = {
 		email: '',
 		password: '',
 	}
 
-	handleOnChange = (e) => {
-		this.setState({
-			[e.target.id]: e.target.value,
-		});
-    }
-    
-    // const handleSignOut = e => {
-    //     Authentication.signOut()
-    //     .then(() => {
-    //         // redirect to login page
-    //         console.log("Signed out");
-    //     });
-    // }
 
-
-
-
-	handleSubmit = e => {
-        e.preventDefault();
-        
-
-        
-		Authentication.signInWithEmailAndPassword(this.email, this.password)
-		.then(credentials => {
-			console.log("Authentication successful!", credentials);
+    /*Skapa Konto/ Sign up*/
+    signUp() {
+        const email = document.querySelector('#email').value;
+        const password = document.querySelector('#password').value;
+        auth.createUserWithEmailAndPassword(email, password)
+          .then((users) => {
+            console.log('Successfully Signed Up');
+            this.setState ({
+                user: {
+                    email: users.email,
+                }
+                
+            })
+            console.log (this.state)
+          })
+          .catch((err) => {
+            alert('Error: ' + err.toString());
+          })
+      }
+    /*Loga in*/
+      login() {
+        const email = document.querySelector('#email').value;
+        const password = document.querySelector('#password').value;
+       auth.signInWithEmailAndPassword(email, password)
+          .then((masssege) => {
+            console.log('Successfully Logged In', (email));
             this.props.history.push('/');
-		})
-		.catch(err => {
-			console.error("Authentication failed!", err);
-		})
-	}
+          })
+          .catch((err) => {
+            console.log('Error: ' + err.toString());
+          })
+      }
+      onSubmit = (e) =>{
+          
+      }
+    
+      render() {
+        return (
+          <div className="form-group">
+                <h2>{this.state.users}</h2>
+                <form onSubmit={this.login}>
+              <div>Email</div>
+              <input id="email" className="form-control" placeholder="Enter Email.." type="text"/>
+            
+            
+              <div>Password</div>
+              <input id="password" className="form-control" placeholder="Enter Password.." type="password"/>
+            
+            <button className="btn btn-primary btn-block">Login</button>
+            </form>
 
-	render() {
-		return (
-                <div id="login">
-                    <h1 className="text-centerS">Login</h1>
-
-                    <form id="loginForm" onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input onChange={this.handleOnChange} type="email" id="email" className="form-control"  />
-                        </div>
-
-
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input onChange={this.handleOnChange} type="password" id="password" className="form-control" />
-                        </div>
-                            <button onCkick={this.handleSubmit} type="submit" className="btn btn-success text-center">Log in</button>
-                        
-                    </form>
-                </div>
-		);
-	}
-}
+            <button className="btn btn-success btn-block"  onClick={this.signUp}>Sign Up</button>
+            
+          </div>
+        )
+      }
+    }
 
 export default LogIn;

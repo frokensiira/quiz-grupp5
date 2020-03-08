@@ -1,8 +1,8 @@
 import React from 'react';
-import AddQuiz from './components/AddQuiz';
 import { Route, BrowserRouter, Link, Switch } from 'react-router-dom'
 import ShowQuiz from './components/ShowQuiz'
 import QuizContainer from './components/QuizContainer'
+import LogIn from './components/LogIn'
 
 
 class App extends React.Component {
@@ -33,7 +33,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={QuizContainer}/>
             <Route path='/quiz/:id' component={ShowQuiz}/>
-            <Route path='/create-quiz' component={AddQuiz}/>
+            <Route path='/create-quiz' component={LogIn}/>
           </Switch>
           
         </div> 
