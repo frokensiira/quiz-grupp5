@@ -1,70 +1,44 @@
 import React from 'react';
+<<<<<<< HEAD
 import AddQuiz from './modules/AddQuiz';
 import QuizItem from './components/QuizItem'
 import { db } from './modules/firebase';
 // import { Authentication } from './modules/firebase';
 import LogIn from './components/LogIn'
 
+=======
+import AddQuiz from './components/AddQuiz';
+import { Route, BrowserRouter, Link, Switch } from 'react-router-dom'
+import ShowQuiz from './components/ShowQuiz'
+import QuizContainer from './components/QuizContainer'
+>>>>>>> master
 
 
 class App extends React.Component {
 
-  state = {
-    quizes: [],
-  }
-
-  getQuiz = () => {
-    db.collection("quizes").get().then((querySnapshot) => {
-      const quizes = [];
-      querySnapshot.forEach((doc) => {
-          quizes.push({
-            titel:doc.data().titel,
-            description: doc.data().description,
-          });
-      });
-      console.log('this is our quiz',quizes)
-      
-      this.setState({
-        quizes:quizes
-      })
-      
-    });
-  }
   
-    componentDidMount() {
-      this.getQuiz()
-    }
 
   render() {
 
-    const quizItem = this.state.quizes.map(quizItem =>{
-      return (
-        <QuizItem
-          quiz={quizItem}
-          key={quizItem.id}
-        />
-      )
-    })
+   
 
     return (
-      <div className="App">
+      <BrowserRouter>
+        <div className="App">
 
-        
-       
-      
-
-
-        <div className="py-3 bg-white text-center">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-3 offset-md-8">
-                <button className="btn btn-primary btn-lg ">Skapa eget quiz</button>
-              </div>
-              <div className="col-md-6 offset-md-3">
-                <h2 className="text-primary display-3 my-4">Quiz</h2>
+          <div className="py-3 bg-white text-center">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-3 offset-md-8">
+                <Link to="create-quiz" className="btn btn-primary btn-lg">Skapa eget quiz</Link>
+                </div>
+                <div className="col-md-6 offset-md-3">
+                  <h2 className="text-primary display-3 my-4">Quiz</h2>
+                </div>
               </div>
             </div>
           </div>
+<<<<<<< HEAD
         </div>
 
         <div className="quiz py-4 bg-primary">
@@ -78,7 +52,19 @@ class App extends React.Component {
         </div>
         
       </div> 
+=======
 
+          
+>>>>>>> master
+
+          <Switch>
+            <Route exact path='/' component={QuizContainer}/>
+            <Route path='/quiz/:id' component={ShowQuiz}/>
+            <Route path='/create-quiz' component={AddQuiz}/>
+          </Switch>
+          
+        </div> 
+      </BrowserRouter> 
 
     );
 
