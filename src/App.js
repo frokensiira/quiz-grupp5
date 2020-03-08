@@ -1,7 +1,9 @@
 import React from 'react';
 import AddQuiz from './modules/AddQuiz';
 import QuizItem from './components/QuizItem'
-import { db } from './modules/firebase'
+import { db } from './modules/firebase';
+// import { Authentication } from './modules/firebase';
+import LogIn from './components/LogIn'
 
 
 
@@ -68,7 +70,7 @@ class App extends React.Component {
         <div className="quiz py-4 bg-primary">
           <div className="container">
             <div className="row row-cols-1 row-cols-md-2 mt-5">
-
+            <LogIn />
             {quizItem}
               <AddQuiz /> 
             </div>
