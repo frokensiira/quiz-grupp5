@@ -2,7 +2,9 @@ import React from 'react'
 //import QuizItem from './QuizItem'
 import { db } from '../modules/firebase'
 import { Link } from 'react-router-dom'
-import football from '../assets/football.jpg'
+//import football from '../assets/football.jpg'
+import logo from '../assets/logo.jpg'
+
 
 
 
@@ -41,7 +43,7 @@ class QuizContainer extends React.Component {
             return (
               <div className="col mb-4 border-info">
                 <div className="card h-100">
-                <img src={football} className="card-img-top" alt=""/>
+                <img src={logo} className="card-img-top" alt=""/>
                 <div className="card-body">
                     <h5 className="card-title">{quizItem.titel}</h5>
                     <p className="card-text">{quizItem.description}</p>

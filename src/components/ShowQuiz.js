@@ -45,7 +45,10 @@ class ShowQuiz extends React.Component{
       
         return(
           <div>
-              {questionList}
+			{questionList}
+			<div className="text-center">
+				<input type="submit" className="btn btn-light" value="Skicka svar"/>
+			</div>
           </div>
         )
     }
