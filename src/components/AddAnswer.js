@@ -7,7 +7,7 @@ class AddAnswer extends React.Component {
         answer: 
             {
                 id: this.props.answer.id,
-                title: '',
+                title: this.props.answer.title,
                 value: this.props.answer.value,
             }
         
@@ -15,14 +15,12 @@ class AddAnswer extends React.Component {
 
     handleChangeAnswer = (e) => {
 
-        //console.log(e.target);
-        
-        //console.log('my title is', e.target.value);
         const answerData = {
             id: e.target.id,
             title: e.target.value,
-            value: this.state.answer.value,
+            value: this.props.answer.value,
         };
+
         this.setState({
             answer: answerData
         })
@@ -34,11 +32,10 @@ class AddAnswer extends React.Component {
     handleChangeValue = e => {
         
         const value = !this.state.answer.value
-        //console.log('my new value is', value);
 
         const answerData = {
-            id: this.state.answer.id,
-            title: this.state.answer.title,
+            id: this.props.answer.id,
+            title: this.props.answer.title,
             value: value
         };
 
@@ -50,15 +47,9 @@ class AddAnswer extends React.Component {
 
     }
 
-
-    
     render() {
 
-        //console.log('testing', this.state.answer.value);
-        
-
         const { id } = this.props.answer;
-        //console.log(id);
 
         const placeholder = `Svarsalternativ ${id}`;
 
@@ -75,14 +66,14 @@ class AddAnswer extends React.Component {
                         type="text" 
                         name="answer"
                         placeholder={placeholder} 
-                        value={this.props.input}
-                        required
+                        value={this.props.answer.title}
+                        
                     />
                 </div>
                 <div className="custom-control custom-checkbox">
                     <input 
                         type="checkbox" 
-                        checked={this.state.answer.value}
+                        checked={this.props.answer.value}
                         className="custom-control-input" 
                         id={check}
                         onChange={this.handleChangeValue}
@@ -100,6 +91,9 @@ class AddAnswer extends React.Component {
 }
 
 export default AddAnswer
+
+
+
 
 
 

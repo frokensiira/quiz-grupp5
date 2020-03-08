@@ -5,8 +5,6 @@ class RenderSingleQuiz extends React.Component {
 
     render() {
 
-        console.log('this is props in RenderSingelQuiz', this.props.singleQuizItem);
-
         const { id, question, points } = this.props.singleQuizItem
 
         return(

@@ -6,32 +6,31 @@ class AddSingleQuiz extends React.Component {
     state = { 
         
         id: 0,
-        points: 0,
+        points: '',
         question: '',
         answers: [
             {
                 id: 1,
-                input: '',
+                title: '',
                 value: true,
             },
             {
                 id: 2,
-                input: '',
+                title: '',
                 value: false,
             },
         ]
       
     }
 
-
     handleAddAnswer = () => {
 
-        const ids = this.state.newQuizItems.map(answer => answer.id);
+        const ids = this.state.answers.map(answer => answer.id);
         const newId = Math.max(...ids) + 1;
 
         const answer = {
             id: newId,
-            input: '',
+            title: '',
             value: false,
         }
 
@@ -52,10 +51,7 @@ class AddSingleQuiz extends React.Component {
             return answer.id == ans.id
         })
 
-        //console.log(clickedAnswer);
-
-
-        clickedAnswer.input = ans.title;
+        clickedAnswer.title = ans.title;
         clickedAnswer.value = ans.value;
 
         this.setState({
@@ -72,22 +68,27 @@ class AddSingleQuiz extends React.Component {
 
     handleAddQuestion = e => {
 
-        //const { points, question, answers } = this.state
-
         const ids = this.state.answers.map(answer => answer.id);
         const newId = Math.max(...ids) + 1;
-
-        //console.log('this.state is', this.state);
 
         this.props.addQuestion(this.state)
 
         this.setState({
-            
+            points: '',
+            question: '',
+            answers: [
+                {
+                    id: 1,
+                    title: '',
+                    value: true,
+                },
+                {
+                    id: 2,
+                    title: '',
+                    value: false,
+                },
+            ]
         })
-
-
-        //console.log('points, question, answers', points, question, answers);
-        //this.props.addQuestion(this.state)
     }
 
     render() {
@@ -107,7 +108,7 @@ class AddSingleQuiz extends React.Component {
                     type="number" 
                     name="points" 
                     placeholder="Poäng som frågan är värd (minst 1p)" 
-                    value={this.state.input}
+                    value={this.state.points}
                 />
             </div>
             <div className="form-group">
@@ -119,8 +120,8 @@ class AddSingleQuiz extends React.Component {
                     type="text" 
                     name="question" 
                     placeholder="Fråga"
-                    value={this.state.input}
-                    required
+                    value={this.state.question}
+                    
                 >
                 </textarea>
             </div>

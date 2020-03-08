@@ -1,7 +1,6 @@
 import React from 'react';
 import AddSingleQuiz from './AddSingleQuiz'; 
 import RenderSingleQuiz from './RenderSingleQuiz'
-//import AddAnswer from './AddAnswer'
 
 class AddQuiz extends React.Component {
 
@@ -18,13 +17,7 @@ class AddQuiz extends React.Component {
 
     addQuestion = (props) => {
 
-        // console.log('from addQuestion: this.state is', props);
-
-        // console.log('these are myprops', props);
-
         const newQuizItems = [...this.state.quiz.quizItems];
-
-        console.log('newQuizItems is', newQuizItems);
 
         let newId;
 
@@ -32,21 +25,10 @@ class AddQuiz extends React.Component {
             newId = 1;
         } else{
             const ids = newQuizItems.map(answer => answer.id);
-            console.log('ids is', ids);
             newId = Math.max(...ids) + 1;
         }
 
-        
-
-        console.log('new id is', newId);
-
-        console.log('props are', props);
-
         props.id = newId;
-
-        console.log('props after newId is', props);
-
-        //console.log('my quizItems are', newQuizItems);
 
         newQuizItems.push(props);
 
@@ -55,13 +37,9 @@ class AddQuiz extends React.Component {
                 quizItems: newQuizItems
             }
         })
-
     }
 
-
     handleChange = e => {
-
-        //console.log('from handleChange', e.target);
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -69,31 +47,20 @@ class AddQuiz extends React.Component {
 
     handleClick = (e) => {
         e.preventDefault();
-        //console.log(e)
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState ({
-       
-    
-        })
     }
     
     render() {
-        
-        //console.log('this.state.quiz is', this.state.quiz.quizItems);
 
         const singleQuizItem = this.state.quiz.quizItems.map(singleQuizItem => {
-            //console.log('my singleQuizItem is', singleQuizItem);
-            //console.log('my singleQuizItem id is', singleQuizItem.id);
             return <RenderSingleQuiz 
             key={singleQuizItem.id} 
             singleQuizItem ={singleQuizItem }    
             />
         });
-
-        //console.log('this is my quiz name', this.state.name);
 
         return (
             <div className="quiz py-4 bg-primary">
@@ -109,13 +76,11 @@ class AddQuiz extends React.Component {
                                     placeholder="Namn på quiz"
                                     value={this.state.name}
                                     onChange={this.handleChange}
-                                    required
+                                    
                                 />
                             </div>
                   
                             <AddSingleQuiz addQuestion={this.addQuestion}/>
-
-                            
 
                         </form>
 
