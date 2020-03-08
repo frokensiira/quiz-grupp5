@@ -24,6 +24,28 @@ class AddQuiz extends React.Component {
 
         const newQuizItems = [...this.state.quiz.quizItems];
 
+        console.log('newQuizItems is', newQuizItems);
+
+        let newId;
+
+        if(newQuizItems.length === 0) {
+            newId = 1;
+        } else{
+            const ids = newQuizItems.map(answer => answer.id);
+            console.log('ids is', ids);
+            newId = Math.max(...ids) + 1;
+        }
+
+        
+
+        console.log('new id is', newId);
+
+        console.log('props are', props);
+
+        props.id = newId;
+
+        console.log('props after newId is', props);
+
         //console.log('my quizItems are', newQuizItems);
 
         newQuizItems.push(props);
@@ -39,7 +61,7 @@ class AddQuiz extends React.Component {
 
     handleChange = e => {
 
-        console.log('from handleChange', e.target);
+        //console.log('from handleChange', e.target);
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -47,7 +69,7 @@ class AddQuiz extends React.Component {
 
     handleClick = (e) => {
         e.preventDefault();
-        console.log(e)
+        //console.log(e)
     }
 
     handleSubmit = (e) => {
@@ -60,11 +82,11 @@ class AddQuiz extends React.Component {
     
     render() {
         
-        console.log('this.state.quiz is', this.state.quiz.quizItems);
+        //console.log('this.state.quiz is', this.state.quiz.quizItems);
 
         const singleQuizItem = this.state.quiz.quizItems.map(singleQuizItem => {
-            console.log('my singleQuizItem is', singleQuizItem);
-            console.log('my singleQuizItem id is', singleQuizItem.id);
+            //console.log('my singleQuizItem is', singleQuizItem);
+            //console.log('my singleQuizItem id is', singleQuizItem.id);
             return <RenderSingleQuiz 
             key={singleQuizItem.id} 
             singleQuizItem ={singleQuizItem }    

@@ -5,7 +5,7 @@ class AddSingleQuiz extends React.Component {
 
     state = { 
         
-        id: 1,
+        id: 0,
         points: 0,
         question: '',
         answers: [
@@ -26,7 +26,7 @@ class AddSingleQuiz extends React.Component {
 
     handleAddAnswer = () => {
 
-        const ids = this.state.answers.map(answer => answer.id);
+        const ids = this.state.newQuizItems.map(answer => answer.id);
         const newId = Math.max(...ids) + 1;
 
         const answer = {
@@ -74,7 +74,10 @@ class AddSingleQuiz extends React.Component {
 
         //const { points, question, answers } = this.state
 
-        console.log('this.state is', this.state);
+        const ids = this.state.answers.map(answer => answer.id);
+        const newId = Math.max(...ids) + 1;
+
+        //console.log('this.state is', this.state);
 
         this.props.addQuestion(this.state)
 
