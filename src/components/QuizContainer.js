@@ -17,9 +17,11 @@ class QuizContainer extends React.Component {
         db.collection("quizes").get().then((snapshot) => {
           const quizes = [];
           snapshot.forEach((doc) => {
+
+            console.log(doc.data())
             const quizName = {
               id: doc.id,
-              titel:doc.data().titel,
+              titel:doc.data().name,
               description: doc.data().description,
             }
               quizes.push(quizName)

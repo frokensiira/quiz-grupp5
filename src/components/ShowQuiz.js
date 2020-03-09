@@ -19,13 +19,16 @@ class ShowQuiz extends React.Component{
 			this.setState({
 				id: response.id,
 				title: response.data().title,
+				questions: response.data.quiz,
 				...response.data(),
 			})
+			console.log(response.data().quiz,'this is questionlist')
 		});
 	}
     render() { 
 
-		    const questionList = this.state.questions.map(question => {		
+		const questionList = this.state.questions.map(question => {	
+			console.log('this is questionList', question)	
           return (
 			<div className="quiz py-4 bg-primary">
               	<div className="container">

@@ -1,7 +1,7 @@
 import  React from 'react';
 import { auth } from '../modules/firebase'
-import AddQuiz from './AddQuiz'
-import { Link, } from 'react-router-dom'
+//import AddQuiz from './AddQuiz'
+//import { Link, } from 'react-router-dom'
 
 
 
@@ -59,7 +59,7 @@ class LogIn extends React.Component {
        auth.signInWithEmailAndPassword(email, password)
           .then((user) => {
             console.log('Successfully Logged In', user);
-            this.props.history.push('./AddQuiz');
+            this.props.history.push('./add-quiz');
             })
             
           
