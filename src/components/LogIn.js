@@ -1,7 +1,7 @@
 import  React from 'react';
 import { auth } from '../modules/firebase'
 import AddQuiz from './AddQuiz'
-import { Link} from 'react-router-dom'
+import { Link, } from 'react-router-dom'
 
 
 
@@ -30,7 +30,8 @@ class LogIn extends React.Component {
 
 
     /*Skapa Konto/ Sign up*/
-    signUp() {
+    signUp = e => {
+      e.preventDefault();
         const email = document.querySelector('#email').value;
         const password = document.querySelector('#password').value;
         auth.createUserWithEmailAndPassword(email, password)
@@ -58,7 +59,7 @@ class LogIn extends React.Component {
        auth.signInWithEmailAndPassword(email, password)
           .then((user) => {
             console.log('Successfully Logged In', user);
-            
+            this.props.history.push('./AddQuiz');
             })
             
           
@@ -75,8 +76,11 @@ class LogIn extends React.Component {
       logout() {
         auth.signOut();
         
-        }
+        };
+
         
+        
+
 
 
     
@@ -98,9 +102,9 @@ class LogIn extends React.Component {
             <button className="btn btn-success btn-block"  onClick={this.signUp}>Sign Up</button>
             <button className="btn-warning btn-block"  onClick={this.logout}>log out</button>
 
-            <div className="App">
-        { this.state.user ? ( <Link to='/AddQuiz'> länkas till addquiz </Link> ) : ( null ) }
-      </div>
+            {/* <div className="App">
+        { this.state.user ? ( <Link to={'AddQuiz'}> länkas till addquiz </Link> ) : ( null ) }
+      </div> */}
             
           </div>
         )
