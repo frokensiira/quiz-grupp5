@@ -25,11 +25,7 @@ class ShowQuiz extends React.Component{
 	}
     render() { 
 
-		    const questionList = this.state.questions.map(question => {
-			  console.log('question', question)
-
-
-			
+		    const questionList = this.state.questions.map(question => {		
           return (
 			<div className="quiz py-4 bg-primary">
               	<div className="container">

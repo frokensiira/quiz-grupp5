@@ -23,9 +23,7 @@ class QuizContainer extends React.Component {
               description: doc.data().description,
             }
               quizes.push(quizName)
-          });
-          console.log('this is our quiz', quizes)
-          
+          });        
           this.setState({
             quizes: quizes,
           })

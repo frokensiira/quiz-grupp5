@@ -10,10 +10,10 @@ class AddQuiz extends React.Component {
     state = { 
         quiz: 
         {   
-            id: 1,
+            id: '',
             name: '',
-            
-            quizItems: []
+            quizItems: [],
+            questions: [''],
         }
     }
 
@@ -42,18 +42,20 @@ class AddQuiz extends React.Component {
         })
     }
 
-    addNewQuiz = () =>{
+    addNewQuiz = (e) =>{
         
-        db.collection("quizes").doc().set({
-            titel: 'hej',
-            description: "test",
+
+        db.collection("quizes").add({
+        name: "Tokyo",
+        description: "Japan"
         })
-        .then(function() {
-        console.log("Document successfully written!");
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
         })
         .catch(function(error) {
-        console.error("Error writing document: ", error);
+            console.error("Error adding document: ", error);
         });
+
     }
 
     handleChange = e => {
