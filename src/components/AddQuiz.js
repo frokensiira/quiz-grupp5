@@ -1,6 +1,8 @@
 import React from 'react';
 import AddSingleQuiz from './AddSingleQuiz'; 
 import RenderSingleQuiz from './RenderSingleQuiz'
+import { db } from '../modules/firebase'
+
 
 class AddQuiz extends React.Component {
 
@@ -31,12 +33,27 @@ class AddQuiz extends React.Component {
         props.id = newId;
 
         newQuizItems.push(props);
+        console.log(newId, 'this is the new id')
 
         this.setState({
             quiz: {
                 quizItems: newQuizItems
             }
         })
+    }
+
+    addNewQuiz = () =>{
+        
+        db.collection("quizes").doc().set({
+            titel: 'hej',
+            description: "test",
+        })
+        .then(function() {
+        console.log("Document successfully written!");
+        })
+        .catch(function(error) {
+        console.error("Error writing document: ", error);
+        });
     }
 
     handleChange = e => {
@@ -90,6 +107,7 @@ class AddQuiz extends React.Component {
                             <button 
                                 id="btn-create-quiz" 
                                 onClick={this.handleClick} 
+                                onClick={this.addNewQuiz}
                                 className="btn btn-primary"
                             >Skapa Quiz</button>
                         </div>
