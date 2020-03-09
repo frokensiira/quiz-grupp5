@@ -6,9 +6,9 @@ class AddAnswer extends React.Component {
         
         answer: 
             {
-                id: this.props.answer.id,
-                title: this.props.answer.title,
-                value: this.props.answer.value,
+                id: 0,
+                title: '',
+                value: '',
             }
         
     }
