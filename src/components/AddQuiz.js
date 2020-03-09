@@ -51,6 +51,8 @@ class AddQuiz extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
+        
     }
     
     render() {
