@@ -39,12 +39,10 @@ class QuizContainer extends React.Component {
         
     render() {
 
-      
-        
-        const quiz = this.state.quizes.map(quiz =>{
+        const quiz = this.state.quizes.map((quiz, i) =>{
           console.log('quiz.answers is', quiz.answers.length);
             return (
-              <div className="col mb-4 border-info">
+              <div className="col mb-4 border-info" key={i}>
                 <div className="card h-100">
                 <img src={logo} className="card-img-top" alt=""/>
                 <div className="card-body">

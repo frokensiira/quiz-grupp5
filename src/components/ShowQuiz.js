@@ -28,39 +28,20 @@ class ShowQuiz extends React.Component{
 		}).catch(err => {
 			console.error(err);
 		});
-
-/* 		db.collection("quizes").get().then((snapshot) => {
-
-          
-			const quizes = [];
-			snapshot.forEach((doc) => {
-			  console.log('doc.data is', doc.data());
-			  const quiz = {
-				id: doc.id,
-				titel:doc.data().name,
-				answers: doc.data().quiz.quizItems,
-			  }
-				quizes.push(quiz)
-			});        
-			this.setState({
-			  quizes: quizes,
-			})
-			
-		  }); */
 	}
     render() { 
 
 		console.log('this is quizItems', this.state.quizItems);
 
-		    const questionList = this.state.quizItems.map(quizItem => {	
+		    const questionList = this.state.quizItems.map((quizItem, i) => {	
 				
 				console.log('quizItem is', quizItem);
           return (
-			<div className="quiz py-4 bg-primary">
+			<div className="quiz py-4 bg-primary" key={i}>
               	<div className="container">
 					<div className="my-5">
                 		<p className="lead font-weight-normal">{quizItem.question}</p>
-						<ShowAnswer data={quizItem}/>
+						<ShowAnswer key={quizItem.id} data={quizItem}/>
 					</div>
 				</div>
 			</div>
