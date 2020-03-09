@@ -12,8 +12,8 @@ class AddQuiz extends React.Component {
         {   
             id: '',
             name: '',
+            
             quizItems: [],
-            questions: [''],
         }
     }
 
@@ -42,7 +42,7 @@ class AddQuiz extends React.Component {
         })
     }
 
-    addNewQuiz = (e) =>{
+/*     addNewQuiz = (e) =>{
         
 
         db.collection("quizes").add({
@@ -56,6 +56,24 @@ class AddQuiz extends React.Component {
             console.error("Error adding document: ", error);
         });
 
+    } */
+
+    addNewQuiz = (e) =>{
+        
+        e.preventDefault();
+        const quiz = this.state
+
+        db.collection("quizes").add(quiz)
+        .then(docRef => {
+            console.log("Document written with ID: ", docRef.id);
+
+            // redirect to start
+            this.props.history.push('/');
+        })
+        .catch(err => {
+            console.error("Error adding document: ", err);
+        });
+
     }
 
     handleChange = e => {
@@ -64,9 +82,7 @@ class AddQuiz extends React.Component {
         })
     }
 
-    handleClick = (e) => {
-        e.preventDefault();
-    }
+ 
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -110,7 +126,6 @@ class AddQuiz extends React.Component {
                         <div className="text-center">
                             <button 
                                 id="btn-create-quiz" 
-                                onClick={this.handleClick} 
                                 onClick={this.addNewQuiz}
                                 className="btn btn-primary"
                             >Skapa Quiz</button>

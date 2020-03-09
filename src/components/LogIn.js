@@ -59,7 +59,7 @@ class LogIn extends React.Component {
        auth.signInWithEmailAndPassword(email, password)
           .then((user) => {
             console.log('Successfully Logged In', user);
-            this.props.history.push('./AddQuiz');
+            this.props.history.push('./add-quiz');
             })
             
           
