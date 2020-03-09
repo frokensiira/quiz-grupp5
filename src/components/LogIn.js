@@ -1,6 +1,7 @@
 import  React from 'react';
 import { auth } from '../modules/firebase'
 import AddQuiz from './AddQuiz'
+import { Link} from 'react-router-dom'
 
 
 
@@ -12,42 +13,72 @@ class LogIn extends React.Component {
 		password: '',
 	}
 
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ 
+          user: {
+						email: user.email,
+					}
+         });
+      } else {
+        this.setState({ user: null });
+      }
+    })
+  }
+
+
 
     /*Skapa Konto/ Sign up*/
     signUp() {
         const email = document.querySelector('#email').value;
         const password = document.querySelector('#password').value;
         auth.createUserWithEmailAndPassword(email, password)
-          .then((users) => {
-            console.log('Successfully Signed Up');
-            this.setState ({
-                user: {
-                    email: users.email,
-                }
-                
-            })
-            console.log (this.state)
+          .then((user) => {
+            console.log('Successfully Signed Up', user);
+            this.setState({ 
+              user: {
+                email: user.email,
+              }
+             })
           })
           .catch((err) => {
             alert('Error: ' + err.toString());
           })
       }
+
+
+
     /*Loga in*/
-      login() {
+
+      login = e => {
+        e.preventDefault();
         const email = document.querySelector('#email').value;
         const password = document.querySelector('#password').value;
        auth.signInWithEmailAndPassword(email, password)
-          .then((masssege) => {
-            console.log('Successfully Logged In', (email));
-            this.props.history.push('/');
-          })
-          .catch((err) => {
-            console.log('Error: ' + err.toString());
-          })
-      }
-      onSubmit = (e) =>{
+          .then((user) => {
+            console.log('Successfully Logged In', user);
+            
+            })
+            
           
+          .catch((err) => {
+            alert('Error: ' + err.toString());
+          })
       }
+
+
+
+      
+      /*Log out*/
+
+      logout() {
+        auth.signOut();
+        
+        }
+        
+
+
     
       render() {
         return (
@@ -65,6 +96,11 @@ class LogIn extends React.Component {
             </form>
 
             <button className="btn btn-success btn-block"  onClick={this.signUp}>Sign Up</button>
+            <button className="btn-warning btn-block"  onClick={this.logout}>log out</button>
+
+            <div className="App">
+        { this.state.user ? ( <Link to='/AddQuiz'> länkas till addquiz </Link> ) : ( null ) }
+      </div>
             
           </div>
         )

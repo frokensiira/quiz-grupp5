@@ -1,6 +1,8 @@
 import React from 'react';
 import AddSingleQuiz from './AddSingleQuiz'; 
 import RenderSingleQuiz from './RenderSingleQuiz'
+import Login from './LogIn'
+import { auth } from '../modules/firebase'
 
 class AddQuiz extends React.Component {
 
@@ -94,7 +96,12 @@ class AddQuiz extends React.Component {
                             >Skapa Quiz</button>
                         </div>
                 </div>
+
+                <div className="App">
+                    { this.state.user ? ( <Login/> ) : ( null ) }
+                </div>
             </div>
+            
         )
     }
 }
