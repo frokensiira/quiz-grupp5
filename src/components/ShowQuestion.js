@@ -1,5 +1,7 @@
 import React from 'react'
 import ShowAnswer from './ShowAnswer';
+import {  Link } from 'react-router-dom'
+
 
 
 class ShowQuestion extends React.Component {
@@ -32,13 +34,16 @@ class ShowQuestion extends React.Component {
     render() {
 
 
-
-        //console.log(this.props.quizItem);
-
+       
         const answerList = this.props.quizItem.answers.map(answer =>{
+
+            
+
             return <ShowAnswer quizId={this.props.quizItem.id} answer={answer} key={answer.id} handleCheckboxAnswer={this.handleCheckboxAnswer}/>
-				  
+            
         });
+        //answerList.sort(function (a, b) { return 0.5 - Math.random() });
+
         
 
         return(

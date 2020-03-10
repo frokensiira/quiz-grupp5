@@ -2,6 +2,7 @@ import React from 'react';
 import AddSingleQuiz from './AddSingleQuiz'; 
 import RenderSingleQuiz from './RenderSingleQuiz'
 import Login from './LogIn'
+import { Link } from 'react-router-dom'
 import { db } from '../modules/firebase'
 
 
@@ -85,6 +86,19 @@ class AddQuiz extends React.Component {
         });
 
         return (
+            <div>
+             <div className="py-3 bg-white text-center">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-3 offset-md-8">
+                    <Link to="/" className="btn btn-primary btn-lg">Tillbaka</Link>
+                  </div>
+                  <div className="col-md-6 offset-md-3">
+                    <h2 className="text-primary display-3 my-4">Q5</h2>
+                  </div>
+                </div>
+            </div>
+          </div>
             <div className="quiz py-4 bg-primary">
                 <div className="mb-3 container-sm bg-white p-4 rounded-lg">
                     <h3 className="text-center mb-5">Skapa ditt eget Quiz</h3>
@@ -121,6 +135,7 @@ class AddQuiz extends React.Component {
                     { this.state.user ? ( <Login/> ) : ( null ) }
                 </div>
             </div>
+        </div>
             
         )
     }

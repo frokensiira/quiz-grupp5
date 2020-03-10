@@ -21,7 +21,7 @@ class QuizContainer extends React.Component {
               titel:doc.data().name,
               answers: doc.data().quiz.quizItems,
             }
-              quizes.push(quiz)
+            quizes.push(quiz)
           });        
           this.setState({
             quizes: quizes,
@@ -54,13 +54,27 @@ class QuizContainer extends React.Component {
         })
 
         return(
-            <div className="quiz py-4 bg-primary">
-                <div className="container">
-                    <div className="row row-cols-1 row-cols-md-2 mt-5">
-                        {quiz}
-                    </div>
+          <div>
+            <div className="py-3 bg-white text-center">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-3 offset-md-8">
+                    <Link to="create-quiz" className="btn btn-primary btn-lg">Skapa eget quiz</Link>
+                  </div>
+                  <div className="col-md-6 offset-md-3">
+                    <h2 className="text-primary display-3 my-4">Q5</h2>
+                  </div>
                 </div>
+            </div>
           </div>
+          <div className="quiz py-4 bg-primary">
+              <div className="container">
+                  <div className="row row-cols-1 row-cols-md-2 mt-5">
+                      {quiz}
+                  </div>
+              </div>
+            </div>
+        </div>
         )
     }
 }

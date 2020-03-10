@@ -1,6 +1,8 @@
 import React from 'react'
 import { db } from '../modules/firebase';
 import ShowQuestion from './ShowQuestion';
+import { Link } from 'react-router-dom'
+
 
 class ShowQuiz extends React.Component{
 	state = {
@@ -20,19 +22,6 @@ class ShowQuiz extends React.Component{
 		  console.log('this is our quiz from state', this.state);
 
 		  console.log('this is our quiz from props', this.props);
-		
-		  //const quiz = this.state
-  
-  /*         db.collection("quizes").add(quiz)
-		  .then(docRef => {
-			  console.log("Document written with ID: ", docRef.id);
-  
-			  // redirect to start
-			  this.props.history.push('/');
-		  })
-		  .catch(err => {
-			  console.error("Error adding document: ", err);
-		  }); */
   
 	  }
 
@@ -40,23 +29,15 @@ class ShowQuiz extends React.Component{
 
 		console.log('this is quizItems from ShowQuestion', quizItems);
 
-/* 		const newQuizItems = [...this.state.quizItems]
-
-		newQuizItems.push(quizItems)
-
-		this.setState({
-			quizItems: newQuizItems
-		}) */
-
     }
   
 	  getQuiz = () => {
 		  db.collection("quizes").doc(this.props.match.params.id).get()
 		  .then((response) => {
-  
-			  //console.log('response is', response.data().quiz.quizItems);
-  
+
 			  const quizItems = response.data().quiz.quizItems
+			  //randomize question 
+			  //quizItems.sort(function (a, b) { return 0.5 - Math.random() })
 
 			  this.setState({
 				  id: response.id,
@@ -68,110 +49,38 @@ class ShowQuiz extends React.Component{
 		  });
 	  }
   
-	  render() { 
-  
-		  //console.log('this is quizItems', this.state.quizItems);
-  
-			  const questionList = this.state.quizItems.map(quizItem => {	
-				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={quizItem.id}/>  
+	  render() {   
+			  const questionList = this.state.quizItems.map((quizItem, i) => {	
+				console.log(i+1)
+				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
 			  	});	 
 		
 		  return(
-			  <form onSubmit={this.sendQuiz}>
-				  <div>
-					  {questionList}
-					  <div className="text-center">
-						  <button type="submit" className="btn btn-primary">Skicka svar</button>
-					  </div>
-				  </div>
-			</form>
+			<div>
+				<div className="py-3 bg-white text-center">
+					<div className="container">
+						<div className="row">
+							<div className="col-md-3 offset-md-8">
+								<Link to='/' className="btn btn-primary btn-lg">Tillbaka</Link>
+							</div>
+						</div>
+						<div className="col-md-6 offset-md-3">
+							<h2 className="text-primary display-3 my-4">{this.state.title}</h2>
+						</div>
+					</div>
+				</div>
+				<form onSubmit={this.sendQuiz}>
+					<div>
+						{questionList}
+						<div className="text-center">
+							<button type="submit" className="btn btn-primary">Skicka svar</button>
+						</div>
+					</div>
+				</form>
+			</div>
 		  )
 	  }
   }
   
 	export default ShowQuiz;
 
-/* class ShowQuiz extends React.Component{
-  state = {
-		id: '',
-		title: '',
-		quizItems: [],
-	}
-
-	componentDidMount() {
-		this.getQuiz()
-	}
-
-	sendQuiz = (e) =>{
-        
-		e.preventDefault();
-		
-		console.log();
-        //const quiz = this.state
-
-        // db.collection("quizes").add(quiz)
-        // .then(docRef => {
-        //     console.log("Document written with ID: ", docRef.id);
-
-        //     // redirect to start
-        //     this.props.history.push('/');
-        // })
-        // .catch(err => {
-        //     console.error("Error adding document: ", err);
-        // });
-
-    }
-
-	getQuiz = () => {
-		db.collection("quizes").doc(this.props.match.params.id).get()
-		.then((response) => {
-
-			//console.log('response is', response.data().quiz.quizItems);
-
-			const quizItems = response.data().quiz.quizItems
-			quizItems.sort(function (a, b) { return 0.5 - Math.random() })
-			this.setState({
-				id: response.id,
-				title: response.data().name,
-				quizItems
-			})
-		}).catch(err => {
-			console.error(err);
-		});
-	}
-
-    render() { 
-
-		//console.log('this is quizItems', this.state.quizItems);
-
-		    const questionList = this.state.quizItems.map((quizItem, i) => {	
-				
-				//console.log('quizItem is', quizItem);
-          return (
-			  
-			<div className="quiz py-4 bg-primary mb-4" key={i}>
-              	<div className="container">
-					<div className="my-5">
-                		<p className="lead font-weight-normal">{quizItem.id}. {quizItem.question}</p>
-						<ShowAnswer data={quizItem}/>
-					</div>
-				</div>
-			</div>
-        )
-      })
-      
-        return(
-			<form onSubmit={this.sendQuiz}>
-				<div>
-					{questionList}
-					<div className="text-center">
-						<button type="submit" className="btn btn-primary">Skicka svar</button>
-					</div>
-				</div>
-		  </form>
-        )
-    }
-}
-
-  export default ShowQuiz; */
-  
