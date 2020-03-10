@@ -47,9 +47,17 @@ class AddSingleQuiz extends React.Component {
 
         const newAnswers = [...this.state.answers];
 
+        //console.log('LOOK AT ME', ans.id)
+
+        //const id = Number(ans.id)
+
+        //console.log('now i am a number', id);
+
         let clickedAnswer = newAnswers.find(answer => {
-            return answer.id == ans.id
+            return answer.id === Number(ans.id)
         })
+
+        //console.log('my clickedAnswer', clickedAnswer);
 
         clickedAnswer.title = ans.title;
         clickedAnswer.value = ans.value;
@@ -67,9 +75,9 @@ class AddSingleQuiz extends React.Component {
     }
 
     handleAddQuestion = e => {
-
+/* 
         const ids = this.state.answers.map(answer => answer.id);
-        const newId = Math.max(...ids) + 1;
+        const newId = Math.max(...ids) + 1; */
 
         this.props.addQuestion(this.state)
 

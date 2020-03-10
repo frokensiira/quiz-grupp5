@@ -1,7 +1,7 @@
 import  React from 'react';
 import { auth } from '../modules/firebase'
-import AddQuiz from './AddQuiz'
-import { Link, } from 'react-router-dom'
+//import AddQuiz from './AddQuiz'
+//import { Link, } from 'react-router-dom'
 
 
 
