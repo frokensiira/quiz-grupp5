@@ -17,38 +17,64 @@ class ShowQuiz extends React.Component{
 		  
 		  e.preventDefault();
 
-		  console.log('this is our quiz from state', this.state);
+		  //console.log('this is our quiz from state', this.state);
 
-		  console.log('this is our quiz from props', this.props);
+		  //console.log('this is our quiz from props', this.props);
 		
 		  //const quiz = this.state
-  
-  /*         db.collection("quizes").add(quiz)
-		  .then(docRef => {
-			  console.log("Document written with ID: ", docRef.id);
-  
-			  // redirect to start
-			  this.props.history.push('/');
-		  })
-		  .catch(err => {
-			  console.error("Error adding document: ", err);
-		  }); */
+
   
 	  }
 
-	  handleGuessedAnswers = quizItems => {
+	  handleGuessedAnswers = guessedAnswer => {
 
-		console.log('this is quizItems from ShowQuestion', quizItems);
+		console.log('from handleGuessedAnswers. guessedAnswer is', guessedAnswer);
 
-/* 		const newQuizItems = [...this.state.quizItems]
+		// console.log('this is ShowQuiz this.state.quizItems', this.state.quizItems);
 
-		newQuizItems.push(quizItems)
+		// //Guessed checking
 
-		this.setState({
+		// console.log('guessedAnswer is', guessedAnswer);
+
+		const guessedQuizItems = [];
+
+		guessedQuizItems.push(guessedAnswer)
+
+		console.log('guessedQuizItems is', guessedQuizItems);
+
+		// //Solution checking
+
+		// const correctQuizItems = [...this.state.quizItems]
+
+		// const correctQuizItem = correctQuizItems[0]
+
+		// console.log('correctQuizItem answers' , correctQuizItem.answers);
+
+		// const correctAnswers = correctQuizItem.answers.filter(correctAnswer => correctAnswer.value === true)
+
+		// console.log('correctAnswers', correctAnswers);
+
+		//Compare checking with solution
+
+		
+
+
+
+		//console.log('this is quizItems from ShowQuiz', quizItems);
+
+/* 		const newQuizItems = []
+
+		newQuizItems.push(quizItems) */
+
+		//console.log('newQuizItems is', newQuizItems);
+
+/* 		this.setState({
 			quizItems: newQuizItems
 		}) */
 
-    }
+	}
+	
+	
   
 	  getQuiz = () => {
 		  db.collection("quizes").doc(this.props.match.params.id).get()

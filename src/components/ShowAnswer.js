@@ -22,18 +22,31 @@ class ShowAnswer extends React.Component {
         
         //console.log('this.state.answer.value is', this.state.answer.value);
 
-        //console.log('you checked this box', this.props.answer.id);
-
         //const newAnswers = [...this.state.answers]
+
+        //console.log('calling handleGuessedAnswers');
+
+        //const guessedAnswers = []
+        
 
         const value = !this.state.answer.value
         //const value = !this.props.value
 
+        // console.log('my question id is', this.props.quizId);
+
+        // console.log('my quizPoints', this.props.quizPoints);
+
         const answer = {
+            questionID: this.props.quizId,
+            points: this.props.quizPoints,
             id: this.props.answer.id,
             title: this.props.answer.title,
             value: value
         }
+
+        //guessedAnswers.push(answer)
+
+        //this.props.handleGuessedAnswers(answer)
 
         //newAnswers.push(answer)
 
@@ -41,17 +54,17 @@ class ShowAnswer extends React.Component {
             answer
         })
 
-        if(value === this.props.answer.value){
+/*         if(value === this.props.answer.value){
             console.log('you answered correct'); 
          } else {
             console.log('you answered wrong'); 
-         }
+         } */
 
-         console.log('from showAnswer, this.props.answer.value', this.props.answer.value);
+        //console.log('from showAnswer, this.props.answer.value', this.props.answer.value);
 
         // console.log('value', value);
         // console.log('this.props.answer.value is', this.props.answer.value);
-        // console.log('answer is', answer);
+        //console.log('answer is', answer);
         //this.props.handleCheckboxAnswer()
         this.props.handleCheckboxAnswer(answer)
         //this.props.handleCheckboxAnswer(this.state.answer.value, this.props.answer.value)
