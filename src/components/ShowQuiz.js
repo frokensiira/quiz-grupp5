@@ -20,6 +20,7 @@ class ShowQuiz extends React.Component{
 			console.log('response is', response.data().quiz.quizItems);
 
 			const quizItems = response.data().quiz.quizItems
+			quizItems.sort(function (a, b) { return 0.5 - Math.random() })
 			this.setState({
 				id: response.id,
 				title: response.data().name,
@@ -28,14 +29,15 @@ class ShowQuiz extends React.Component{
 		}).catch(err => {
 			console.error(err);
 		});
+		
 	}
     render() { 
 
 		console.log('this is quizItems', this.state.quizItems);
 
-		    const questionList = this.state.quizItems.map((quizItem, i) => {	
+		const questionList = this.state.quizItems.map((quizItem, i) => {	
 				
-				console.log('quizItem is', quizItem);
+		console.log('quizItem is', quizItem);
           return (
 			<div className="quiz py-4 bg-primary" key={i}>
               	<div className="container">
