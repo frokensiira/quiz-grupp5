@@ -24,12 +24,13 @@ class AddAnswer extends React.Component {
         this.setState({
             answer: answerData
         })
-
         this.props.handleAnswerInput(answerData)
-
+        
     }
 
     handleChangeValue = e => {
+
+        console.log('this is my id', this.props.answer.id);
         
         const value = !this.state.answer.value
 
@@ -45,14 +46,13 @@ class AddAnswer extends React.Component {
 
         this.props.handleAnswerInput(answerData)
 
+
     }
 
     render() {
 
         const { id } = this.props.answer;
-
         const placeholder = `Svarsalternativ ${id}`;
-
         const check = `customCheck${id}`;
 
         return(
@@ -85,7 +85,6 @@ class AddAnswer extends React.Component {
                     >Rätt svar</label>
                 </div>
             </div>
-        
         )
     }
 }

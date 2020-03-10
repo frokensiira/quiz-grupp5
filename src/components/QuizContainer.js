@@ -3,10 +3,8 @@ import { db } from '../modules/firebase'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 
-
-
-
 class QuizContainer extends React.Component {
+
     state = {
         quizes: [],
       }
@@ -14,10 +12,10 @@ class QuizContainer extends React.Component {
       getQuiz = () => {
         db.collection("quizes").get().then((snapshot) => {
 
-          console.log('snapshot from QuizContainer is', snapshot);
+          //console.log('snapshot from QuizContainer is', snapshot);
           const quizes = [];
           snapshot.forEach((doc) => {
-            console.log('doc.data is', doc.data());
+            //console.log('doc.data is', doc.data());
             const quiz = {
               id: doc.id,
               titel:doc.data().name,
@@ -35,12 +33,11 @@ class QuizContainer extends React.Component {
         componentDidMount() {
           this.getQuiz()
         }
-    
-        
+          
     render() {
-
-        const quiz = this.state.quizes.map((quiz, i) =>{
-          console.log('quiz.answers is', quiz.answers.length);
+        
+        const quiz = this.state.quizes.map((quiz,i) =>{
+          //console.log('quiz.answers is', quiz.answers.length);
             return (
               <div className="col mb-4 border-info" key={i}>
                 <div className="card h-100">
