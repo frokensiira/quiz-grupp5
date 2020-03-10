@@ -5,44 +5,43 @@ import ShowAnswer from './ShowAnswer';
 
 class ShowQuestion extends React.Component {
 
-/*     state = {
+    state = {
         quizItems: [
             {
-        questionID: '',
+        id: '',
+        points: 0,
         question: '',
         answers: []
         }
     ]
-    } */
-
-    state = {
-        quizItems: [],
     }
 
+
+/* 
     handleGuessedAnswers = (answer) => {
 
-        console.log('from handleGuessedAnswers', answer);
+        //console.log('from handleGuessedAnswers', answer);
 
         //this.props.handleGuessedAnswers(answer)
 
-        const guessedAnswer = {
-            id: answer.id,
-            points: answer.points,
-            title: answer.title,
-        }
+        // const guessedAnswer = {
+        //     id: answer.id,
+        //     points: answer.points,
+        //     title: answer.title,
+        // }
 
-        const guessedAnswers = [...this.state.quizItems, guessedAnswer]
+        // const guessedAnswers = [...this.state.quizItems, guessedAnswer]
 
-        console.log('this is guessed answers', guessedAnswers);
+        //console.log('this is guessed answers', guessedAnswers);
 
-        this.setState({
-            quizItems: guessedAnswers,
-        })
+        // this.setState({
+        //     quizItems: guessedAnswers,
+        // })
 
         //this.props.handleGuessedAnswers(guessedAnswers)
 
 
-    }
+    } */
 
     
 
@@ -57,7 +56,7 @@ class ShowQuestion extends React.Component {
 
             
 
-            return <ShowAnswer quizPoint={this.props.quizItem.points} quizId={this.props.quizItem.id} answer={answer} key={answer.id} handleGuessedAnswers={this.handleGuessedAnswers}/>
+            return <ShowAnswer quizPoint={this.props.quizItem.points} quizId={this.props.quizItem.id} answer={answer} key={answer.id} handleGuessedAnswers={this.props.handleGuessedAnswers}/>
             
         });
         //answerList.sort(function (a, b) { return 0.5 - Math.random() });

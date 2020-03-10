@@ -15,22 +15,12 @@ class ShowQuiz extends React.Component{
 	  componentDidMount() {
 		  this.getQuiz()
 	  }
-  
-	  sendQuiz = (e) =>{
-		  
-		  e.preventDefault();
 
-		  //console.log('this is our quiz from state', this.state);
+	  handleGuessedAnswers = (guessedAnswer, question) => {
 
-		  console.log('this is our quiz from props', this.props);
+		//console.log('quizItems from ShowQuiz is', this.state.quizItems);
 
-		  console.log('this is our quiz from state', this.state);
-  
-	  }
-
-	  handleGuessedAnswers = guessedAnswer => {
-
-		console.log('from handleGuessedAnswers. guessedAnswer is', guessedAnswer);
+		//console.log('from ShowQuiz handleGuessedAnswers. guessedAnswer and question is', guessedAnswer, question);
 
 		// console.log('this is ShowQuiz this.state.quizItems', this.state.quizItems);
 
@@ -38,11 +28,27 @@ class ShowQuiz extends React.Component{
 
 		// console.log('guessedAnswer is', guessedAnswer);
 
-		const guessedQuizItems = [];
+		const newQuizItems = [...this.state.quizItems];
 
-		guessedQuizItems.push(guessedAnswer)
+		const guessedQuestion = newQuizItems.find(quizItem => {
+			return quizItem.id === question
+		})
 
-		console.log('guessedQuizItems is', guessedQuizItems);
+		if(guessedAnswer.value === true){
+			guessedQuestion.correctAnswer = true;
+		} else {
+			guessedQuestion.correctAnswer = false;
+		}
+
+		console.log('is my question correct?', guessedQuestion.correctAnswer);
+
+		this.setState({
+			quizItems: newQuizItems
+		})
+
+/* 		guessedQuizItems.push(guessedAnswer)
+
+		console.log('guessedQuizItems is', guessedQuizItems); */
 
 		// //Solution checking
 
@@ -51,6 +57,27 @@ class ShowQuiz extends React.Component{
 		// const correctQuizItem = correctQuizItems[0]
 
     }
+  
+	  sendQuiz = (e) =>{
+		  
+		e.preventDefault();
+
+		const correctAnswers = this.state.quizItems.filter(quizItem => quizItem.correctAnswer === true)
+
+		console.log('my correct answers are:', correctAnswers);
+
+		const points = correctAnswers.map(correctAnswer => correctAnswer.points)
+
+		console.log('My pointsarray is', points);
+
+		const totalPoints = points.reduce((acc, curr) => {
+			return acc += Number(curr)
+		}, 0)
+	
+		console.log('my total points are', totalPoints);
+	  }
+
+
   
 	  getQuiz = () => {
 		  db.collection("quizes").doc(this.props.match.params.id).get()
@@ -71,6 +98,8 @@ class ShowQuiz extends React.Component{
 	  }
   
 	  render() {   
+
+		console.log('from ShowQuiz, these are my quizItems', this.state.quizItems);
 			  const questionList = this.state.quizItems.map((quizItem, i) => {	
 				//console.log(i+1)
 				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  

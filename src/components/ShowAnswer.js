@@ -16,13 +16,13 @@ class ShowAnswer extends React.Component {
     handleAnswer = (e) => {
 
         // const value = !this.state.answer.value
-        const value = !this.props.value
+        //const value = !this.props.value
 
         // console.log('this.props.answer.id', e.target.id);
         // console.log('this.props.answer.title', this.props.answer.title);
         // console.log('value', value);
 
-        const answerData = {
+/*         const answerData = {
             id: e.target.id,
             title: this.props.answer.title,
             value: value,
@@ -33,9 +33,9 @@ class ShowAnswer extends React.Component {
 
         this.setState({
             answer: newAnswers
-        })
+        }) */
 
-        //this.props.handleGuessedAnswers(answerData)
+        this.props.handleGuessedAnswers(this.props.answer, this.props.quizId)
 
 /*         if(value === this.props.answer.value){
             console.log('you answered correct'); 
