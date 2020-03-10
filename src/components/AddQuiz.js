@@ -34,7 +34,7 @@ class AddQuiz extends React.Component {
         props.id = newId;
 
         newQuizItems.push(props);
-        console.log(newId, 'this is the new id')
+        //console.log(newId, 'this is the new id')
 
         this.setState({
             quiz: {
@@ -42,22 +42,6 @@ class AddQuiz extends React.Component {
             }
         })
     }
-
-/*     addNewQuiz = (e) =>{
-        
-
-        db.collection("quizes").add({
-        name: "Tokyo",
-        description: "Japan"
-        })
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
-
-    } */
 
     addNewQuiz = (e) =>{
         

@@ -1,22 +1,154 @@
 import React from 'react'
 
+class ShowAnswer extends React.Component {
 
-const ShowAnswer = (props) => {
+    state = {
+        answer: 
+            {
+            id:'',
+            title: '', 
+            value: '',
+            }
+        
+    }
 
-    console.log('props array is', props.data.answers);
-        const answerList = props.data.answers.map(answer =>{
-            return (
-                <div className="form-check my-2 text-white">
-                    <input type="checkbox" name="q1" value="A"  className="mr-2"/>
-                    <label className="form check-label">{answer.title}</label>
+    handleCheckbox = (e) => {
+
+        //console.log('this props is', this.props);
+
+        //console.log('this is e.target,', e.target);
+
+        //console.log('this.props.answer.value is', this.props.answer.value);
+        
+        //console.log('this.state.answer.value is', this.state.answer.value);
+
+        //console.log('you checked this box', this.props.answer.id);
+
+        //const newAnswers = [...this.state.answers]
+
+        const value = !this.state.answer.value
+        //const value = !this.props.value
+
+        const answer = {
+            id: this.props.answer.id,
+            title: this.props.answer.title,
+            value: value
+        }
+
+        //newAnswers.push(answer)
+
+        this.setState({
+            answer
+        })
+
+        if(value === this.props.answer.value){
+            console.log('you answered correct'); 
+         } else {
+            console.log('you answered wrong'); 
+         }
+
+         console.log('from showAnswer, this.props.answer.value', this.props.answer.value);
+
+        // console.log('value', value);
+        // console.log('this.props.answer.value is', this.props.answer.value);
+        // console.log('answer is', answer);
+        //this.props.handleCheckboxAnswer()
+        this.props.handleCheckboxAnswer(answer)
+        //this.props.handleCheckboxAnswer(this.state.answer.value, this.props.answer.value)
+    }
+
+    
+
+    render() {
+
+        const newId = `${this.props.quizId}${this.props.answer.id}`;
+
+        //console.log('this.props.answer.id is', this.props.answer.id);
+        //console.log('props array is', this.props);
+            return(
+                <div className="custom-control custom-checkbox">
+                    <input 
+                        type="checkbox" 
+                        checked={this.state.value}
+                        className="custom-control-input" 
+                        id={newId}
+                        onChange={this.handleCheckbox}
+                        />
+                        
+                    <label 
+                        className="custom-control-label" 
+                        htmlFor={newId}
+                    >{this.props.answer.title}</label>
                 </div>
             )
+        
+    }
+}
+        
+
+export default ShowAnswer
+
+
+/* class ShowAnswer extends React.Component {
+
+    state = {
+        value: false,
+    }
+
+    handleCheckbox = (e) => {
+        console.log('checkbox is', e.target);
+
+        const value = !this.state.value
+
+        this.setState({
+            value: value
         })
+
+        //this.props.handleAnswerInput(answerData)
+    }
+
+    
+
+    render() {
+        //console.log('props array is', this.props.data.answers);
+        const answerList = this.props.data.answers.map((answer, i) =>{
+
+            return(
+                <div className="custom-control custom-checkbox" key={i}>
+                    <input 
+                        type="checkbox" 
+                        checked={this.state.value}
+                        className="custom-control-input" 
+                        id={i}
+                        onChange={this.handleCheckbox}
+                        />
+                        
+                    <label 
+                        className="custom-control-label" 
+                        htmlFor={i}
+                    >{answer.title}</label>
+                </div>
+            )
+            // return (
+            //     <div className="custom-control custom-checkbox my-2 text-white" key={i}>
+            //         <input 
+            //             type="checkbox" 
+            //             checked={this.state.value} 
+            //             className="mr-2 custom-control-input"
+            //             onChange={this.handleCheckbox}                         
+            //         />
+            //         <label className="custom-control-label">{answer.title}</label>
+            //     </div>
+            // )
+        })
+
         return(
             <div>
                 {answerList}
           </div>
         )
     }
+    }
+        
 
-export default ShowAnswer
+export default ShowAnswer */
