@@ -4,6 +4,7 @@ import ShowQuestion from './ShowQuestion';
 import { Link } from 'react-router-dom'
 
 
+
 class ShowQuiz extends React.Component{
 	state = {
 		  id: '',
@@ -22,6 +23,8 @@ class ShowQuiz extends React.Component{
 		  //console.log('this is our quiz from state', this.state);
 
 		  console.log('this is our quiz from props', this.props);
+
+		  console.log('this is our quiz from state', this.state);
   
 	  }
 
@@ -69,9 +72,11 @@ class ShowQuiz extends React.Component{
   
 	  render() {   
 			  const questionList = this.state.quizItems.map((quizItem, i) => {	
-				console.log(i+1)
+				//console.log(i+1)
 				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
-			  	});	 
+				  });	 
+				  
+				  //console.log('this is quizItems', this.state.quizItems);
 		
 		  return(
 			<div>
@@ -95,6 +100,7 @@ class ShowQuiz extends React.Component{
 						</div>
 					</div>
 				</form>
+
 			</div>
 		  )
 	  }

@@ -3,89 +3,82 @@ import React from 'react'
 class ShowAnswer extends React.Component {
 
     state = {
-        answer: 
+        answer: [
             {
-            id:'',
-            title: '', 
+            id: 0,
+            title: '',
             value: '',
+            points: 0
             }
-        
+        ]
     }
 
-    handleCheckbox = (e) => {
+    handleAnswer = (e) => {
 
-        //console.log('this props is', this.props);
+        // const value = !this.state.answer.value
+        const value = !this.props.value
 
-        //console.log('this is e.target,', e.target);
+        // console.log('this.props.answer.id', e.target.id);
+        // console.log('this.props.answer.title', this.props.answer.title);
+        // console.log('value', value);
 
-        //console.log('this.props.answer.value is', this.props.answer.value);
-        
-        //console.log('this.state.answer.value is', this.state.answer.value);
-
-        //const newAnswers = [...this.state.answers]
-
-        //console.log('calling handleGuessedAnswers');
-
-        //const guessedAnswers = []
-        
-
-        const value = !this.state.answer.value
-        //const value = !this.props.value
-
-        // console.log('my question id is', this.props.quizId);
-
-        // console.log('my quizPoints', this.props.quizPoints);
-
-        const answer = {
-            questionID: this.props.quizId,
-            points: this.props.quizPoints,
-            id: this.props.answer.id,
+        const answerData = {
+            id: e.target.id,
             title: this.props.answer.title,
-            value: value
-        }
+            value: value,
+            points: this.props.quizPoint
+        };
 
-        //guessedAnswers.push(answer)
-
-        //this.props.handleGuessedAnswers(answer)
-
-        //newAnswers.push(answer)
+        const newAnswers = [...this.state.answer, answerData]
 
         this.setState({
-            answer
+            answer: newAnswers
         })
+
+        //this.props.handleGuessedAnswers(answerData)
 
 /*         if(value === this.props.answer.value){
             console.log('you answered correct'); 
-         } else {
+
+            console.log('this question is worth', this.props.quizPoint);
+
+            const newPoints = [...this.state.points]
+
+            newPoints.push(this.props.quizPoint)
+
+            this.setState({
+                points: newPoints
+            })
+
+            console.log('my newPoints are', newPoints);
+        } else {
             console.log('you answered wrong'); 
-         } */
-
-        //console.log('from showAnswer, this.props.answer.value', this.props.answer.value);
-
-        // console.log('value', value);
-        // console.log('this.props.answer.value is', this.props.answer.value);
-        //console.log('answer is', answer);
-        //this.props.handleCheckboxAnswer()
-        this.props.handleCheckboxAnswer(answer)
-        //this.props.handleCheckboxAnswer(this.state.answer.value, this.props.answer.value)
+        } */
     }
 
     
 
     render() {
 
-        const newId = `${this.props.quizId}${this.props.answer.id}`;
+/*         console.log('quiz id is', this.props.quizId);
 
-        //console.log('this.props.answer.id is', this.props.answer.id);
-        //console.log('props array is', this.props);
+        console.log('this quiz answer id is', this.props.answer.id); */
+
+        //console.log('this state is now', this.state);
+
+        const newId = `${this.props.quizId}.${this.props.answer.id}`;
+        
+
             return(
-                <div className="custom-control custom-checkbox">
+                <div className="custom-control custom-radio">
                     <input 
-                        type="checkbox" 
+                        type="radio" 
+                        //checked={this.props.value}
                         checked={this.state.value}
                         className="custom-control-input" 
                         id={newId}
-                        onChange={this.handleCheckbox}
+                        name={this.props.quizId}
+                        onChange={this.handleAnswer}
                         />
                         
                     <label 
@@ -100,68 +93,3 @@ class ShowAnswer extends React.Component {
         
 
 export default ShowAnswer
-
-
-/* class ShowAnswer extends React.Component {
-
-    state = {
-        value: false,
-    }
-
-    handleCheckbox = (e) => {
-        console.log('checkbox is', e.target);
-
-        const value = !this.state.value
-
-        this.setState({
-            value: value
-        })
-
-        //this.props.handleAnswerInput(answerData)
-    }
-
-    
-
-    render() {
-        //console.log('props array is', this.props.data.answers);
-        const answerList = this.props.data.answers.map((answer, i) =>{
-
-            return(
-                <div className="custom-control custom-checkbox" key={i}>
-                    <input 
-                        type="checkbox" 
-                        checked={this.state.value}
-                        className="custom-control-input" 
-                        id={i}
-                        onChange={this.handleCheckbox}
-                        />
-                        
-                    <label 
-                        className="custom-control-label" 
-                        htmlFor={i}
-                    >{answer.title}</label>
-                </div>
-            )
-            // return (
-            //     <div className="custom-control custom-checkbox my-2 text-white" key={i}>
-            //         <input 
-            //             type="checkbox" 
-            //             checked={this.state.value} 
-            //             className="mr-2 custom-control-input"
-            //             onChange={this.handleCheckbox}                         
-            //         />
-            //         <label className="custom-control-label">{answer.title}</label>
-            //     </div>
-            // )
-        })
-
-        return(
-            <div>
-                {answerList}
-          </div>
-        )
-    }
-    }
-        
-
-export default ShowAnswer */

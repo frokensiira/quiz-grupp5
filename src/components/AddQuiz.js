@@ -103,7 +103,7 @@ class AddQuiz extends React.Component {
                 <div className="mb-3 container-sm bg-white p-4 rounded-lg">
                     <h3 className="text-center mb-5">Skapa ditt eget Quiz</h3>
                         <form className="form-group" onSubmit={this.handleSubmit}>
-                            <div className="form-group">
+                            <div className="form-group mb-5">
                                 <input 
                                     id="name"
                                     name="quiz-title"

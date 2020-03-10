@@ -2,6 +2,7 @@ import React from 'react'
 
 class AddAnswer extends React.Component {
 
+
     state = {
         
         answer: 
@@ -24,27 +25,25 @@ class AddAnswer extends React.Component {
         this.setState({
             answer: answerData
         })
-        this.props.handleAnswerInput(answerData)
+        this.props.handleAnswerInputText(answerData)
         
     }
 
     handleChangeValue = e => {
 
-        console.log('this is my id', this.props.answer.id);
-        
-        const value = !this.state.answer.value
+        const value = !this.props.answer.value
 
         const answerData = {
             id: this.props.answer.id,
             title: this.props.answer.title,
             value: value
         };
-
+/*
         this.setState({
             answer: answerData
         })
-
-        this.props.handleAnswerInput(answerData)
+*/
+        this.props.handleAnswerInputRadiobutton(answerData)
 
 
     }
@@ -53,7 +52,11 @@ class AddAnswer extends React.Component {
 
         const { id } = this.props.answer;
         const placeholder = `Svarsalternativ ${id}`;
-        const check = `customCheck${id}`;
+        const radio = `customRadio${id}`;
+
+
+        //console.log('this state is', this.state);
+        //console.log("this.props.answer.value", this.props.answer.value);
 
         return(
             
@@ -70,18 +73,21 @@ class AddAnswer extends React.Component {
                         
                     />
                 </div>
-                <div className="custom-control custom-checkbox">
+                <div className="custom-control custom-radio">
                     <input 
-                        type="checkbox" 
-                        checked={this.props.answer.value}
+                        type="radio" 
+                        //value={this.props.answer.value}
+                        //checked={this.state.answer.value}
+                        defaultChecked={this.props.answer.value}
                         className="custom-control-input" 
-                        id={check}
+                        id={radio}
+                        name="customRadio"
                         onChange={this.handleChangeValue}
                         />
                         
                     <label 
                         className="custom-control-label" 
-                        htmlFor={check}
+                        htmlFor={radio}
                     >Rätt svar</label>
                 </div>
             </div>
@@ -90,9 +96,6 @@ class AddAnswer extends React.Component {
 }
 
 export default AddAnswer
-
-
-
 
 
 

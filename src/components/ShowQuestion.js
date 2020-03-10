@@ -1,6 +1,5 @@
 import React from 'react'
 import ShowAnswer from './ShowAnswer';
-import {  Link } from 'react-router-dom'
 
 
 
@@ -17,24 +16,27 @@ class ShowQuestion extends React.Component {
     } */
 
     state = {
-        quizItems: []
+        quizItems: [],
     }
 
-    handleCheckboxAnswer = (answer) => {
+    handleGuessedAnswers = (answer) => {
 
-        console.log('from handleCheckboxAnswer', answer);
+        console.log('from handleGuessedAnswers', answer);
 
         //this.props.handleGuessedAnswers(answer)
 
-        const guessedAnswers = [...this.state.quizItems]
+        const guessedAnswer = {
+            id: answer.id,
+            points: answer.points,
+            title: answer.title,
+        }
+
+        const guessedAnswers = [...this.state.quizItems, guessedAnswer]
 
         console.log('this is guessed answers', guessedAnswers);
 
-        guessedAnswers.push(answer)
-
         this.setState({
-            quizItems: [guessedAnswers]
-            
+            quizItems: guessedAnswers,
         })
 
         //this.props.handleGuessedAnswers(guessedAnswers)
@@ -46,14 +48,16 @@ class ShowQuestion extends React.Component {
 
     render() {
 
+        //console.log('this is state from showQuestion', this.state);
         //console.log('this.props.quizItem from ShowQuestion is', this.props.quizItem);
 
+        
        
         const answerList = this.props.quizItem.answers.map(answer =>{
 
             
 
-            return <ShowAnswer quizId={this.props.quizItem.id} answer={answer} key={answer.id} handleCheckboxAnswer={this.handleCheckboxAnswer}/>
+            return <ShowAnswer quizPoint={this.props.quizItem.points} quizId={this.props.quizItem.id} answer={answer} key={answer.id} handleGuessedAnswers={this.handleGuessedAnswers}/>
             
         });
         //answerList.sort(function (a, b) { return 0.5 - Math.random() });

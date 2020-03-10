@@ -23,6 +23,28 @@ class AddSingleQuiz extends React.Component {
       
     }
 
+    handleAnswerInputRadiobutton = ans => {
+
+        const answerFalse = [...this.state.answers]
+
+        answerFalse.forEach(answer => answer.value = false)        
+
+        console.log('My array with false answers', answerFalse);
+
+        let clickedAnswer = answerFalse.find(answer => {
+            return answer.id === Number(ans.id)
+        })
+
+        console.log('this is clickedAnswer', clickedAnswer);
+
+        clickedAnswer.value = true
+
+        this.setState({
+            answers: answerFalse
+        })
+
+    } 
+
     handleAddAnswer = () => {
 
         const ids = this.state.answers.map(answer => answer.id);
@@ -43,7 +65,9 @@ class AddSingleQuiz extends React.Component {
         })
     }
 
-    handleAnswerInput = (ans) => {
+    handleAnswerInputText = (ans) => {
+
+        //console.log('ans is', ans);
 
         const newAnswers = [...this.state.answers];
 
@@ -57,8 +81,6 @@ class AddSingleQuiz extends React.Component {
             return answer.id === Number(ans.id)
         })
 
-        //console.log('my clickedAnswer', clickedAnswer);
-
         clickedAnswer.title = ans.title;
         clickedAnswer.value = ans.value;
 
@@ -67,6 +89,8 @@ class AddSingleQuiz extends React.Component {
         })
 
     }
+
+
 
     handleChange = e => {
         this.setState({
@@ -101,13 +125,29 @@ class AddSingleQuiz extends React.Component {
 
     render() {
 
+        //console.log('from addsingelQuiz, state is', this.state.answers);
+
         const answers =  this.state.answers.map(answer => {
-            return <AddAnswer handleAnswerInput={this.handleAnswerInput} key={answer.id} answer={answer} handleChangeAnswers={this.handleChangeAnswers}/>
+            return <AddAnswer handleAnswerInputText={this.handleAnswerInputText} handleAnswerInputRadiobutton={this.handleAnswerInputRadiobutton} key={answer.id} answer={answer} handleChangeAnswers={this.handleChangeAnswers}/>
         }) 
 
         return(
             <div id="quiz-item">
 
+            
+            <div className="form-group">
+                <textarea 
+                    maxLength="200" 
+                    onChange={this.handleChange} 
+                    id="question" 
+                    className="form-control form-control-lg" 
+                    type="text" 
+                    name="question" 
+                    placeholder="Fråga"
+                    value={this.state.question}             
+                >
+                </textarea>
+            </div>
             <div className="form-group">
                 <input 
                     onChange={this.handleChange} 
@@ -118,20 +158,6 @@ class AddSingleQuiz extends React.Component {
                     placeholder="Poäng som frågan är värd (minst 1p)" 
                     value={this.state.points}
                 />
-            </div>
-            <div className="form-group">
-                <textarea 
-                    maxLength="200" 
-                    onChange={this.handleChange} 
-                    id="question" 
-                    className="form-control form-control-lg" 
-                    type="text" 
-                    name="question" 
-                    placeholder="Fråga"
-                    value={this.state.question}
-                    
-                >
-                </textarea>
             </div>
 
             
@@ -172,3 +198,6 @@ class AddSingleQuiz extends React.Component {
 }
 
 export default AddSingleQuiz
+
+
+
