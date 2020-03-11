@@ -18,16 +18,6 @@ class ShowQuiz extends React.Component{
 
 	  handleGuessedAnswers = (guessedAnswer, question) => {
 
-		//console.log('quizItems from ShowQuiz is', this.state.quizItems);
-
-		//console.log('from ShowQuiz handleGuessedAnswers. guessedAnswer and question is', guessedAnswer, question);
-
-		// console.log('this is ShowQuiz this.state.quizItems', this.state.quizItems);
-
-		// //Guessed checking
-
-		// console.log('guessedAnswer is', guessedAnswer);
-
 		const newQuizItems = [...this.state.quizItems];
 
 		const guessedQuestion = newQuizItems.find(quizItem => {
@@ -45,16 +35,6 @@ class ShowQuiz extends React.Component{
 		this.setState({
 			quizItems: newQuizItems
 		})
-
-/* 		guessedQuizItems.push(guessedAnswer)
-
-		console.log('guessedQuizItems is', guessedQuizItems); */
-
-		// //Solution checking
-
-		// const correctQuizItems = [...this.state.quizItems]
-
-		// const correctQuizItem = correctQuizItems[0]
 
     }
   
@@ -104,8 +84,6 @@ class ShowQuiz extends React.Component{
 				//console.log(i+1)
 				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
 				  });	 
-				  
-				  //console.log('this is quizItems', this.state.quizItems);
 		
 		  return(
 			<div>

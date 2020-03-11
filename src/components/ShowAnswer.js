@@ -15,56 +15,12 @@ class ShowAnswer extends React.Component {
 
     handleAnswer = (e) => {
 
-        // const value = !this.state.answer.value
-        //const value = !this.props.value
-
-        // console.log('this.props.answer.id', e.target.id);
-        // console.log('this.props.answer.title', this.props.answer.title);
-        // console.log('value', value);
-
-/*         const answerData = {
-            id: e.target.id,
-            title: this.props.answer.title,
-            value: value,
-            points: this.props.quizPoint
-        };
-
-        const newAnswers = [...this.state.answer, answerData]
-
-        this.setState({
-            answer: newAnswers
-        }) */
-
         this.props.handleGuessedAnswers(this.props.answer, this.props.quizId)
-
-/*         if(value === this.props.answer.value){
-            console.log('you answered correct'); 
-
-            console.log('this question is worth', this.props.quizPoint);
-
-            const newPoints = [...this.state.points]
-
-            newPoints.push(this.props.quizPoint)
-
-            this.setState({
-                points: newPoints
-            })
-
-            console.log('my newPoints are', newPoints);
-        } else {
-            console.log('you answered wrong'); 
-        } */
     }
 
     
 
     render() {
-
-/*         console.log('quiz id is', this.props.quizId);
-
-        console.log('this quiz answer id is', this.props.answer.id); */
-
-        //console.log('this state is now', this.state);
 
         const newId = `${this.props.quizId}.${this.props.answer.id}`;
         
