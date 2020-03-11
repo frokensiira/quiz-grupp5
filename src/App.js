@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // save reference to onAuthStateChanged listener so we can unsubscribe from events when unmounted to prevent memory leaks
+  
     this.onAuthStateChangedListener = auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
@@ -56,7 +56,7 @@ class App extends React.Component {
           {
             this.state.user
             ? (<p className="username">Welcome Back! {this.state.user.email}!</p>)
-            : (<p className="username">No one is logged in.</p>)
+            : (<p className="username">loga in för skapa Quiz.</p>)
           }      
 
           <div className="py-3 bg-white text-center">

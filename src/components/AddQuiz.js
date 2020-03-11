@@ -1,7 +1,6 @@
 import React from 'react';
 import AddSingleQuiz from './AddSingleQuiz'; 
 import RenderSingleQuiz from './RenderSingleQuiz'
-import Login from './LogIn'
 import { db } from '../modules/firebase'
 import Header from './Header'
 
