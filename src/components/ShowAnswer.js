@@ -30,7 +30,7 @@ class ShowAnswer extends React.Component {
                     <input 
                         type="radio" 
                         //checked={this.props.value}
-                        checked={this.state.value}
+                        //checked={this.state.value}
                         className="custom-control-input" 
                         id={newId}
                         name={this.props.quizId}
