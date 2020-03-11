@@ -100,7 +100,7 @@ class LogIn extends React.Component {
             </form>
 
             <button className="btn btn-success btn-block"  onClick={this.signUp}>Sign Up</button>
-            <button className="btn-warning btn-block"  onClick={this.logout}>log out</button>
+            {/* <button className="btn-warning btn-block"  onClick={this.logout}>log out</button> */}
 
             {/* <div className="App">
         { this.state.user ? ( <Link to={'AddQuiz'}> länkas till addquiz </Link> ) : ( null ) }
