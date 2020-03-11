@@ -1,7 +1,7 @@
 import React from 'react'
 import { db } from '../modules/firebase';
 import ShowQuestion from './ShowQuestion';
-import { Link } from 'react-router-dom'
+import Header from './Header'
 
 
 class ShowQuiz extends React.Component{
@@ -68,27 +68,17 @@ class ShowQuiz extends React.Component{
 	  }
   
 	  render() {   
+			  
 			  const questionList = this.state.quizItems.map((quizItem, i) => {	
-				console.log(i+1)
 				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
 			  	});	 
 		
 		  return(
 			<div>
-				<div className="py-3 bg-white text-center">
-					<div className="container">
-						<div className="row">
-							<div className="col-md-3 offset-md-8">
-								<Link to='/' className="btn btn-primary btn-lg">Tillbaka</Link>
-							</div>
-						</div>
-						<div className="col-md-6 offset-md-3">
-							<h2 className="text-primary display-3 my-4">{this.state.title}</h2>
-						</div>
-					</div>
-				</div>
+				<Header/>
 				<form onSubmit={this.sendQuiz}>
 					<div>
+						<h2 className="text-center">{this.state.title}</h2>
 						{questionList}
 						<div className="text-center">
 							<button type="submit" className="btn btn-primary">Skicka svar</button>
