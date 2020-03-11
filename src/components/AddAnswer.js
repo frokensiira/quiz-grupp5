@@ -2,7 +2,6 @@ import React from 'react'
 
 class AddAnswer extends React.Component {
 
-
     state = {
         
         answer: 
@@ -11,7 +10,6 @@ class AddAnswer extends React.Component {
                 title: '',
                 value: '',
             }
-        
     }
 
     handleChangeAnswer = (e) => {
@@ -25,6 +23,7 @@ class AddAnswer extends React.Component {
         this.setState({
             answer: answerData
         })
+
         this.props.handleAnswerInputText(answerData)
         
     }
@@ -38,25 +37,16 @@ class AddAnswer extends React.Component {
             title: this.props.answer.title,
             value: value
         };
-/*
-        this.setState({
-            answer: answerData
-        })
-*/
-        this.props.handleAnswerInputRadiobutton(answerData)
 
+        this.props.handleAnswerInputRadiobutton(answerData)
 
     }
 
     render() {
 
-        const { id } = this.props.answer;
+        const { id, title, value } = this.props.answer;
         const placeholder = `Svarsalternativ ${id}`;
         const radio = `customRadio${id}`;
-
-
-        //console.log('this state is', this.state);
-        //console.log("this.props.answer.value", this.props.answer.value);
 
         return(
             
@@ -69,16 +59,14 @@ class AddAnswer extends React.Component {
                         type="text" 
                         name="answer"
                         placeholder={placeholder} 
-                        value={this.props.answer.title}
+                        value={title}
                         
                     />
                 </div>
-                <div className="custom-control custom-radio">
+                <div className="custom-control custom-radio mb-3">
                     <input 
                         type="radio" 
-                        //value={this.props.answer.value}
-                        //checked={this.state.answer.value}
-                        defaultChecked={this.props.answer.value}
+                        defaultChecked={value}
                         className="custom-control-input" 
                         id={radio}
                         name="customRadio"

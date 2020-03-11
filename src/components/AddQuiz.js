@@ -8,7 +8,6 @@ import Header from './Header'
 
 class AddQuiz extends React.Component {
 
-
     state = { 
         name: '',
         quiz: 
@@ -51,7 +50,6 @@ class AddQuiz extends React.Component {
 
         db.collection("quizes").add(quiz)
         .then(docRef => {
-            console.log("Document written with ID: ", docRef.id);
 
             // redirect to start
             this.props.history.push('/');
@@ -68,12 +66,8 @@ class AddQuiz extends React.Component {
         })
     }
 
- 
-
     handleSubmit = (e) => {
         e.preventDefault();
-
-        
     }
     
     render() {
@@ -87,10 +81,10 @@ class AddQuiz extends React.Component {
 
         return (
             <div>
-            <Header />
-            <div className="quiz py-4 bg-primary">
-                <div className="mb-3 container-sm bg-white p-4 rounded-lg">
-                    <h3 className="text-center mb-5">Skapa ditt eget Quiz</h3>
+                <Header />
+                <div className="quiz py-4 bg-primary">
+                    <div className="mb-3 container-sm bg-white p-4 rounded-lg">
+                        <h3 className="text-center mb-5">Skapa ditt eget Quiz</h3>
                         <form className="form-group" onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <input 
@@ -100,8 +94,7 @@ class AddQuiz extends React.Component {
                                     type="text" 
                                     placeholder="Namn på quiz"
                                     value={this.state.name}
-                                    onChange={this.handleChange}
-                                    
+                                    onChange={this.handleChange} 
                                 />
                             </div>
                             <div className="form-group mb-5">
@@ -117,9 +110,8 @@ class AddQuiz extends React.Component {
                                 >
                                 </textarea>
                             </div>
-                  
+                
                             <AddSingleQuiz addQuestion={this.addQuestion}/>
-
                         </form>
 
                         {singleQuizItem}
@@ -131,13 +123,13 @@ class AddQuiz extends React.Component {
                                 className="btn btn-primary"
                             >Skapa Quiz</button>
                         </div>
-                </div>
+                    </div>
 
-                <div className="App">
-                    { this.state.user ? ( <Login/> ) : ( null ) }
+                    <div className="App">
+                        { this.state.user ? ( <Login/> ) : ( null ) }
+                    </div>
                 </div>
             </div>
-        </div>
             
         )
     }

@@ -1,53 +1,29 @@
 import React from 'react'
 
-class ShowAnswer extends React.Component {
+const ShowAnswer = (props) => {
 
-    state = {
-        answer: [
-            {
-            id: 0,
-            title: '',
-            value: '',
-            points: 0
-            }
-        ]
+    const handleAnswer = (e) => {
+
+        props.handleGuessedAnswers(props.answer, props.quizId)
     }
 
-    
-
-    handleAnswer = (e) => {
-
-        this.props.handleGuessedAnswers(this.props.answer, this.props.quizId)
-    }
-
-    
-
-    render() {
-
-        const newId = `${this.props.quizId}.${this.props.answer.id}`;
+        const newId = `${props.quizId}.${props.answer.id}`;
         
-
             return(
                 <div className="custom-control custom-radio">
                     <input 
                         type="radio" 
-                        //checked={this.props.value}
-                        //checked={this.state.value}
                         className="custom-control-input" 
                         id={newId}
-                        name={this.props.quizId}
-                        onChange={this.handleAnswer}
+                        name={props.quizId}
+                        onChange={handleAnswer}
                         />
-                        
                     <label 
                         className="custom-control-label" 
                         htmlFor={newId}
-                    >{this.props.answer.title}</label>
+                    >{props.answer.title}</label>
                 </div>
             )
-        
-    }
 }
         
-
 export default ShowAnswer
