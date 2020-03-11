@@ -60,6 +60,8 @@ class ShowQuiz extends React.Component{
 		})
 	
 		console.log('my total points are', totalPoints);
+
+		window.scrollTo(0,0)
 	  }
 
 
@@ -69,8 +71,6 @@ class ShowQuiz extends React.Component{
 		  .then((response) => {
 
 			  const quizItems = response.data().quiz.quizItems
-			  //randomize question 
-			  //quizItems.sort(function (a, b) { return 0.5 - Math.random() })
 
 			  this.setState({
 				  id: response.id,
@@ -87,14 +87,14 @@ class ShowQuiz extends React.Component{
 		const renderResult = () => {
 		  
 			if(this.state.totalPoints){
-				return (<div className="result py-4 bg-light text-center">
-							<div className="container lead">
+				return (<div className="result py-4 text-center">
+							<div id="result" className="container border border-primary rounded">
 								<p>Grattis! Du fick<span className="text-primary display-4 p-3">{this.state.totalPoints}</span> poäng</p>
 							</div>
 						</div>) 
 			} else if(this.state.totalPoints === 0){
-				return (<div className="result py-4 bg-light text-center">
-							<div className="container lead">
+				return (<div className="result py-4 text-center">
+							<div className="container border border-primary">
 								<p>Du fick tyvärr<span className="text-primary display-4 p-3">{this.state.totalPoints}</span> poäng</p>
 							</div>
 						</div>)

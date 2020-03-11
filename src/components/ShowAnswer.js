@@ -13,6 +13,8 @@ class ShowAnswer extends React.Component {
         ]
     }
 
+    
+
     handleAnswer = (e) => {
 
         this.props.handleGuessedAnswers(this.props.answer, this.props.quizId)
