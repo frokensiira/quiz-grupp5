@@ -20,7 +20,7 @@ class App extends React.Component {
   
             <Route exact path='/' component={QuizContainer}/>
             <Route path='/quiz/:id' component={ShowQuiz}/>
-            <Route path='/create-quiz' component={LogIn}/>
+            <Route path='/login' component={LogIn}/>
             <Route path='/add-quiz' component={AddQuiz}/>
       
           

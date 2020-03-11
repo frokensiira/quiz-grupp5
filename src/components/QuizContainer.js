@@ -57,7 +57,7 @@ class QuizContainer extends React.Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-3 offset-md-8">
-								<Link to="create-quiz" className="btn btn-primary btn-lg">Skapa eget quiz</Link>
+								<Link to="login" className="btn btn-primary btn-lg">Skapa eget quiz</Link>
 							</div>
 							<div className="col-md-6 offset-md-3">
 								<h2 className="text-primary display-3 my-4">Q5</h2>
