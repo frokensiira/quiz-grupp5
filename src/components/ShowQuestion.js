@@ -5,6 +5,8 @@ import ShowAnswer from './ShowAnswer';
 
 class ShowQuestion extends React.Component {
 
+    
+
     render() {     
        
         const answerList = this.props.quizItem.answers.map(answer =>{

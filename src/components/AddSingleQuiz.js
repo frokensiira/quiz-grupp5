@@ -29,13 +29,9 @@ class AddSingleQuiz extends React.Component {
 
         answerFalse.forEach(answer => answer.value = false)        
 
-        console.log('My array with false answers', answerFalse);
-
         let clickedAnswer = answerFalse.find(answer => {
             return answer.id === Number(ans.id)
         })
-
-        console.log('this is clickedAnswer', clickedAnswer);
 
         clickedAnswer.value = true
 
@@ -67,15 +63,9 @@ class AddSingleQuiz extends React.Component {
 
     handleAnswerInputText = (ans) => {
 
-        //console.log('ans is', ans);
-
         const newAnswers = [...this.state.answers];
 
-        //console.log('LOOK AT ME', ans.id)
-
         //const id = Number(ans.id)
-
-        //console.log('now i am a number', id);
 
         let clickedAnswer = newAnswers.find(answer => {
             return answer.id === Number(ans.id)

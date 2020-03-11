@@ -10,6 +10,7 @@ class ShowQuiz extends React.Component{
 		  id: '',
 		  title: '',
 		  quizItems: [],
+		  totalPoints: '',
 	  }
   
 	  componentDidMount() {
@@ -53,6 +54,10 @@ class ShowQuiz extends React.Component{
 		const totalPoints = points.reduce((acc, curr) => {
 			return acc += Number(curr)
 		}, 0)
+
+		this.setState({
+			totalPoints
+		})
 	
 		console.log('my total points are', totalPoints);
 	  }
@@ -78,6 +83,8 @@ class ShowQuiz extends React.Component{
 	  }
   
 	  render() {   
+
+		console.log('totalPoints from render is', this.state.totalPoints);
 			  
 			  const questionList = this.state.quizItems.map((quizItem, i) => {	
 				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
@@ -86,6 +93,13 @@ class ShowQuiz extends React.Component{
 		  return(
 			<div>
 				<Header/>
+
+				{this.state.totalPoints ? 
+				(<div className="result py-4 bg-light text-center">
+					<div className="container lead">
+						<p>Grattis! Du fick<span className="text-primary display-4 p-3">{this.state.totalPoints}</span> poäng</p>
+					</div>
+				</div>) : ''}
 				<form onSubmit={this.sendQuiz}>
 					<div>
 						<h2 className="text-center">{this.state.title}</h2>
