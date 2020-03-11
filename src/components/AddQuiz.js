@@ -10,11 +10,12 @@ class AddQuiz extends React.Component {
 
 
     state = { 
+        name: '',
         quiz: 
         {   
             id: '',
             name: '',
-            
+            description: '',
             quizItems: [],
         }
     }
@@ -35,7 +36,6 @@ class AddQuiz extends React.Component {
         props.id = newId;
 
         newQuizItems.push(props);
-        //console.log(newId, 'this is the new id')
 
         this.setState({
             quiz: {
@@ -92,7 +92,7 @@ class AddQuiz extends React.Component {
                 <div className="mb-3 container-sm bg-white p-4 rounded-lg">
                     <h3 className="text-center mb-5">Skapa ditt eget Quiz</h3>
                         <form className="form-group" onSubmit={this.handleSubmit}>
-                            <div className="form-group mb-5">
+                            <div className="form-group">
                                 <input 
                                     id="name"
                                     name="quiz-title"
@@ -103,6 +103,19 @@ class AddQuiz extends React.Component {
                                     onChange={this.handleChange}
                                     
                                 />
+                            </div>
+                            <div className="form-group mb-5">
+                                <textarea 
+                                    id="description" 
+                                    name="description" 
+                                    className="form-control form-control-lg"
+                                    type="text" 
+                                    placeholder="Beskrivning av quiz"
+                                    value={this.state.description} 
+                                    onChange={this.handleChange} 
+                                    maxLength="200"  
+                                >
+                                </textarea>
                             </div>
                   
                             <AddSingleQuiz addQuestion={this.addQuestion}/>

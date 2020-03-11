@@ -10,15 +10,13 @@ class QuizContainer extends React.Component {
       }
     
       getQuiz = () => {
-        db.collection("quizes").get().then((snapshot) => {
-
-          //console.log('snapshot from QuizContainer is', snapshot);
+        db.collection("quizes").orderBy('name').get().then((snapshot) => {
           const quizes = [];
           snapshot.forEach((doc) => {
-            //console.log('doc.data is', doc.data());
             const quiz = {
               id: doc.id,
               titel:doc.data().name,
+              description: doc.data().description,
               answers: doc.data().quiz.quizItems,
             }
             quizes.push(quiz)
@@ -35,9 +33,11 @@ class QuizContainer extends React.Component {
         }
           
     render() {
+
+      console.log('this is state from quizcontainer', this.state.quizes);
         
         const quiz = this.state.quizes.map((quiz,i) =>{
-          //console.log('quiz.answers is', quiz.answers.length);
+
             return (
               <div className="col mb-4 border-info" key={i}>
                 <div className="card h-100">

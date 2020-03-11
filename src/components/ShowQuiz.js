@@ -31,8 +31,6 @@ class ShowQuiz extends React.Component{
 			guessedQuestion.correctAnswer = false;
 		}
 
-		console.log('is my question correct?', guessedQuestion.correctAnswer);
-
 		this.setState({
 			quizItems: newQuizItems
 		})
@@ -45,11 +43,7 @@ class ShowQuiz extends React.Component{
 
 		const correctAnswers = this.state.quizItems.filter(quizItem => quizItem.correctAnswer === true)
 
-		console.log('my correct answers are:', correctAnswers);
-
 		const points = correctAnswers.map(correctAnswer => correctAnswer.points)
-
-		console.log('My pointsarray is', points);
 
 		const totalPoints = points.reduce((acc, curr) => {
 			return acc += Number(curr)
@@ -58,14 +52,10 @@ class ShowQuiz extends React.Component{
 		this.setState({
 			totalPoints
 		})
-	
-		console.log('my total points are', totalPoints);
 
 		window.scrollTo(0,0)
 	  }
 
-
-  
 	  getQuiz = () => {
 		  db.collection("quizes").doc(this.props.match.params.id).get()
 		  .then((response) => {
@@ -90,7 +80,10 @@ class ShowQuiz extends React.Component{
 				return (<div className="result py-4 text-center">
 							<div id="result" className="container border border-primary rounded">
 								<p>Grattis! Du fick<span className="text-primary display-4 p-3">{this.state.totalPoints}</span> poäng</p>
+{/* 								<Link to={'/quiz/'+ quiz.id} className="btn btn-primary btn-lg mb-4">Starta quiz</Link> */}
+								{/* <button className="btn btn-primary mb-3" >Spela igen?</button> */}
 							</div>
+							
 						</div>) 
 			} else if(this.state.totalPoints === 0){
 				return (<div className="result py-4 text-center">
@@ -102,8 +95,6 @@ class ShowQuiz extends React.Component{
 				return ''
 			}
 		}
-
-		console.log('totalPoints from render is', this.state.totalPoints);
 			  
 			  const questionList = this.state.quizItems.map((quizItem, i) => {	
 				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
@@ -122,11 +113,9 @@ class ShowQuiz extends React.Component{
 						</div>
 					</div>
 				</form>
-
 			</div>
 		  )
 	  }
   }
   
 	export default ShowQuiz;
-

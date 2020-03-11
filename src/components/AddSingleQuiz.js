@@ -65,9 +65,7 @@ class AddSingleQuiz extends React.Component {
 
         const newAnswers = [...this.state.answers];
 
-        //const id = Number(ans.id)
-
-        let clickedAnswer = newAnswers.find(answer => {
+        const clickedAnswer = newAnswers.find(answer => {
             return answer.id === Number(ans.id)
         })
 
@@ -80,8 +78,6 @@ class AddSingleQuiz extends React.Component {
 
     }
 
-
-
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
@@ -89,10 +85,6 @@ class AddSingleQuiz extends React.Component {
     }
 
     handleAddQuestion = e => {
-/* 
-        const ids = this.state.answers.map(answer => answer.id);
-        const newId = Math.max(...ids) + 1; */
-
         this.props.addQuestion(this.state)
 
         this.setState({
@@ -114,8 +106,6 @@ class AddSingleQuiz extends React.Component {
     }
 
     render() {
-
-        //console.log('from addsingelQuiz, state is', this.state.answers);
 
         const answers =  this.state.answers.map(answer => {
             return <AddAnswer handleAnswerInputText={this.handleAnswerInputText} handleAnswerInputRadiobutton={this.handleAnswerInputRadiobutton} key={answer.id} answer={answer} handleChangeAnswers={this.handleChangeAnswers}/>
@@ -181,8 +171,6 @@ class AddSingleQuiz extends React.Component {
             </div>
 
         </div>
-
-
         )
     }
 }
