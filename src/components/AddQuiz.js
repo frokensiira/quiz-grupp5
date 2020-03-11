@@ -52,8 +52,6 @@ class AddQuiz extends React.Component {
         db.collection("quizes").add(quiz)
         .then(docRef => {
             console.log("Document written with ID: ", docRef.id);
-
-            // redirect to start
             this.props.history.push('/');
         })
         .catch(err => {
@@ -134,7 +132,7 @@ class AddQuiz extends React.Component {
                 </div>
 
                 <div className="App">
-                    { this.state.user ? ( <Login/> ) : ( null ) }
+                    { this.state.user ?  ( this.props.history.push('/add-quiz')) : ( null ) }
                 </div>
             </div>
         </div>
