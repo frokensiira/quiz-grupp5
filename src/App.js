@@ -39,13 +39,7 @@ class App extends React.Component {
     this.onAuthStateChangedListener();
   }
 
-
-
-
-
   render() {
-
-   
 
     return (
       <BrowserRouter>

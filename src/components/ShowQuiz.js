@@ -1,7 +1,6 @@
 import React from 'react'
 import { db } from '../modules/firebase';
 import ShowQuestion from './ShowQuestion';
-import Header from './Header'
 
 class ShowQuiz extends React.Component{
 	state = {
@@ -97,7 +96,6 @@ class ShowQuiz extends React.Component{
 		
 		return(
 			<div>
-				<Header/>
 				{renderResult()}
 				<form onSubmit={this.sendQuiz}>
 					<div>

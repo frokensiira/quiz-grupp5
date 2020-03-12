@@ -16,7 +16,7 @@ const Navi = props => {
 
     return (
         <div>
-            <nav class="navbar navbar-light bg-light">
+            <nav className="navbar navbar-light bg-light">
             <Link to="/" className="navbar-brand">Hem</Link>
                  
                            { props.user

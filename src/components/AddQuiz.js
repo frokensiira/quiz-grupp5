@@ -2,8 +2,6 @@ import React from 'react';
 import AddSingleQuiz from './AddSingleQuiz'; 
 import RenderSingleQuiz from './RenderSingleQuiz'
 import { db } from '../modules/firebase'
-import Header from './Header'
-
 
 class AddQuiz extends React.Component {
 
@@ -80,7 +78,6 @@ class AddQuiz extends React.Component {
 
         return (
             <div>
-                <Header />
                 <div className="quiz py-4 bg-primary">
                     <div className="mb-3 container-sm bg-white p-4 rounded-lg">
                         <h3 className="text-center mb-5">Skapa ditt eget Quiz</h3>
@@ -124,11 +121,11 @@ class AddQuiz extends React.Component {
                         </div>
                     </div>
 
-                <div className="App">
-                    { this.state.user ?  ( this.props.history.push('/add-quiz')) : ( null ) }
+                    <div className="App">
+                        { this.state.user ?  ( this.props.history.push('/add-quiz')) : ( null ) }
+                    </div>
                 </div>
             </div>
-            
         )
     }
 }
