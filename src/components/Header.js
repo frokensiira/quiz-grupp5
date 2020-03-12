@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {    
     return(
         <div className="py-3 bg-white text-center">
-              <div className="container">
+            <div className="container">
                 <div className="row">
                   <div className="col-md-3 offset-md-8">
                     {/* <Link to="/" className="btn btn-primary btn-lg">Tillbaka</Link> */}
@@ -14,7 +14,7 @@ const Header = () => {
                   </div>
                 </div>
             </div>
-          </div>
+        </div>
     )
 }
 

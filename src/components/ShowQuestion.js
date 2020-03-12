@@ -1,15 +1,13 @@
 import React from 'react'
 import ShowAnswer from './ShowAnswer';
 
-
-
 class ShowQuestion extends React.Component {
 
     state = {
         answers: []
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
         const answers = [...this.props.quizItem.answers]
         const randomizedAnswers = []

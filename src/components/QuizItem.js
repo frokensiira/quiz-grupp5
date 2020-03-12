@@ -1,10 +1,10 @@
 import React from 'react'
-//import football from '../assets/football.jpg'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 
 const QuizItem = (props) => {
-    const {id ,titel, description} = props.quiz
+
+    const { id, titel, description } = props.quiz
 
     return(
         <div className="col mb-4 border-info">
@@ -17,7 +17,7 @@ const QuizItem = (props) => {
                     <div className="card-footer bg-transparent border-primary">10 frågor</div>
                 </div>
             </div>
-    </div>
+        </div>
     )
 }
 

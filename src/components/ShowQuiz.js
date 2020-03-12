@@ -3,8 +3,6 @@ import { db } from '../modules/firebase';
 import ShowQuestion from './ShowQuestion';
 import Header from './Header'
 
-
-
 class ShowQuiz extends React.Component{
 	state = {
 		  id: '',
@@ -21,9 +19,7 @@ class ShowQuiz extends React.Component{
 
 		const newQuizItems = [...this.state.quizItems];
 
-		const guessedQuestion = newQuizItems.find(quizItem => {
-			return quizItem.id === question
-		})
+		const guessedQuestion = newQuizItems.find(quizItem => quizItem.id === question)
 
 		if(guessedAnswer.value === true){
 			guessedQuestion.correctAnswer = true;
@@ -37,7 +33,7 @@ class ShowQuiz extends React.Component{
 
     }
   
-	  sendQuiz = (e) =>{
+	  sendQuiz = e =>{
 		  
 		e.preventDefault();
 
@@ -57,19 +53,20 @@ class ShowQuiz extends React.Component{
 	  }
 
 	  getQuiz = () => {
-		  db.collection("quizes").doc(this.props.match.params.id).get()
-		  .then((response) => {
+		db.collection("quizes").doc(this.props.match.params.id).get()
+		.then((response) => {
 
-			  const quizItems = response.data().quiz.quizItems
+			const quizItems = response.data().quiz.quizItems
 
-			  this.setState({
-				  id: response.id,
-				  title: response.data().name,
-				  quizItems
-			  })
-		  }).catch(err => {
-			  console.error(err);
-		  });
+			this.setState({
+				id: response.id,
+				title: response.data().name,
+				quizItems
+			})
+			
+		}).catch(err => {
+			console.error(err);
+		});
 	  }
   
 	  render() {  
@@ -78,16 +75,14 @@ class ShowQuiz extends React.Component{
 		  
 			if(this.state.totalPoints){
 				return (<div className="result py-4 text-center">
-							<div id="result" className="container border border-primary rounded">
+							<div className="container border border-primary rounded">
 								<p>Grattis! Du fick<span className="text-primary display-4 p-3">{this.state.totalPoints}</span> poäng</p>
-{/* 								<Link to={'/quiz/'+ quiz.id} className="btn btn-primary btn-lg mb-4">Starta quiz</Link> */}
-								{/* <button className="btn btn-primary mb-3" >Spela igen?</button> */}
 							</div>
 							
 						</div>) 
 			} else if(this.state.totalPoints === 0){
 				return (<div className="result py-4 text-center">
-							<div className="container border border-primary">
+							<div className="container border border-primary rounded">
 								<p>Du fick tyvärr<span className="text-primary display-4 p-3">{this.state.totalPoints}</span> poäng</p>
 							</div>
 						</div>)
@@ -96,11 +91,11 @@ class ShowQuiz extends React.Component{
 			}
 		}
 			  
-			  const questionList = this.state.quizItems.map((quizItem, i) => {	
-				return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
-				  });	 
+		const questionList = this.state.quizItems.map((quizItem, i) => {	
+			return <ShowQuestion handleGuessedAnswers={this.handleGuessedAnswers} quizItem={quizItem} key={i}/>  
+		});	 
 		
-		  return(
+		return(
 			<div>
 				<Header/>
 				{renderResult()}
@@ -109,12 +104,12 @@ class ShowQuiz extends React.Component{
 						<h2 className="text-center">{this.state.title}</h2>
 						{questionList}
 						<div className="text-center">
-							<button type="submit" className="btn btn-primary">Skicka svar</button>
+							<button type="submit" className="btn btn-primary mb-2">Skicka svar</button>
 						</div>
 					</div>
 				</form>
 			</div>
-		  )
+		)
 	  }
   }
   

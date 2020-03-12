@@ -20,7 +20,7 @@ class AddSingleQuiz extends React.Component {
                 value: false,
             },
         ]
-      
+
     }
 
     handleAnswerInputRadiobutton = ans => {
@@ -29,9 +29,7 @@ class AddSingleQuiz extends React.Component {
 
         answerFalse.forEach(answer => answer.value = false)        
 
-        let clickedAnswer = answerFalse.find(answer => {
-            return answer.id === Number(ans.id)
-        })
+        let clickedAnswer = answerFalse.find(answer => answer.id === Number(ans.id))
 
         clickedAnswer.value = true
 
@@ -43,7 +41,7 @@ class AddSingleQuiz extends React.Component {
 
     handleAddAnswer = () => {
 
-        const ids = this.state.answers.map(answer => answer.id);
+        const ids = this.state.answers.map(answer => answer.id)
         const newId = Math.max(...ids) + 1;
 
         const answer = {
@@ -114,63 +112,61 @@ class AddSingleQuiz extends React.Component {
         return(
             <div id="quiz-item">
 
-            
-            <div className="form-group">
-                <textarea 
-                    maxLength="200" 
-                    onChange={this.handleChange} 
-                    id="question" 
-                    className="form-control form-control-lg" 
-                    type="text" 
-                    name="question" 
-                    placeholder="Fråga"
-                    value={this.state.question}             
-                >
-                </textarea>
-            </div>
-            <div className="form-group">
-                <input 
-                    onChange={this.handleChange} 
-                    id="points" 
-                    className="form-control form-control-lg" 
-                    type="number" 
-                    name="points" 
-                    placeholder="Poäng som frågan är värd (minst 1p)" 
-                    value={this.state.points}
-                />
-            </div>
+                <div className="form-group">
+                    <textarea 
+                        maxLength="200" 
+                        onChange={this.handleChange} 
+                        id="question" 
+                        className="form-control form-control-lg" 
+                        type="text" 
+                        name="question" 
+                        placeholder="Fråga"
+                        value={this.state.question}             
+                    >
+                    </textarea>
+                </div>
 
-            
-            {answers}
-            
+                <div className="form-group">
+                    <input 
+                        onChange={this.handleChange} 
+                        id="points" 
+                        className="form-control form-control-lg" 
+                        type="number" 
+                        name="points" 
+                        placeholder="Poäng som frågan är värd" 
+                        value={this.state.points}
+                    />
+                </div>
 
-            <div className="form-row">
+                {answers}
+            
+                <div className="form-row">
 
-                <div className="form-group col-md-4">
+                    <div className="form-group col-md-4">
+                        <button 
+                            id="btn-create-answer" 
+                            onClick={this.handleAddAnswer} 
+                            className="btn btn-outline-secondary" 
+                        >
+                            <span id="plus" className="font-weight-bold">+</span> 
+                            Fler svarsalternativ
+                        </button>
+                    </div>
+
+                </div>
+
+                <div className="form-group">
                     <button 
                         id="btn-create-answer" 
-                        onClick={this.handleAddAnswer} 
-                        className="btn btn-outline-secondary" 
+                        onClick={this.handleAddQuestion} 
+                        className="btn btn-primary"
                     >
-                        <span id="plus" className="font-weight-bold">+</span> 
-                        Fler svarsalternativ
+                    <span id="plus" className="font-weight-bold">+</span>
+                        Lägg till fråga
                     </button>
                 </div>
 
             </div>
-
-            <div className="form-group">
-                <button 
-                    id="btn-create-answer" 
-                    onClick={this.handleAddQuestion} 
-                    className="btn btn-primary"
-                >
-                <span id="plus" className="font-weight-bold">+</span>
-                    Lägg till fråga
-                </button>
-            </div>
-
-        </div>
         )
     }
 }
